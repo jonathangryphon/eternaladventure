@@ -1,0 +1,2 @@
+# eternaladventure
+Home server configs
