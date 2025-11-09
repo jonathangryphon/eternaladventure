@@ -11,16 +11,38 @@
     ./services/headscale.nix
   ];
 
-	############################
+  ############################
   # Host & Timezone
   ############################
   networking.hostName = "KingJalyn";
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 	
-	############################
+  ############################
   # Security
   ############################
-  security.autoUpgrade.enable = true;
   security.sudo.wheelNeedsPassword = true;
-}
+
+  ############################
+  # Auto Update
+  ############################
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";         # or "weekly"
+    persistent = true;       # keeps schedule after reboots
+    allowReboot = true;      # reboot automatically if needed (optional)
+    rebootWindow = {         # optional safe reboot window
+      lower = "02:00";
+      upper = "03:00";
+    };
+  };
+
+  ############################
+  # System Packages
+  ############################
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+    zfs
+  ];
