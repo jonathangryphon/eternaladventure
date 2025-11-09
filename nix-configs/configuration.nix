@@ -12,6 +12,20 @@
   ];
 
   ############################
+  # Boot
+  ############################
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  ############################
+  # Networking & Firewall
+  ############################
+  networking.networkmanager.enable = true;
+
+  networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ ... ];
+
+  ############################
   # Host & Timezone
   ############################
   networking.hostName = "KingJalyn";
@@ -46,3 +60,9 @@
     wget
     zfs
   ];
+
+  ############################
+  # First NixOS version installed
+  ############################
+  system.stateVersion = "";
+};
