@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./users.nix
+    ./ssh.nix
     ./zfs.nix
     ./podman-containers.nix
     ./services/ente.nix
