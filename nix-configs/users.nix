@@ -2,6 +2,9 @@
 
 # ssh keys are added/managed via ssh.nix
 
+# users are completely managed by NixOS, so any password changes for example must be declared in the configs
+users.mutableUsers = false;
+
 {
   users.users.charity = {
     isNormalUser = true;
