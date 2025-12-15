@@ -40,7 +40,5 @@ in
   systemd.services.traefik.serviceConfig = {
     StateDirectory = "traefik";
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
 
