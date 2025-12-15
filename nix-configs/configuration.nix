@@ -22,12 +22,12 @@
   ############################
   networking.networkmanager.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   ############################
   # Host & Timezone
   ############################
-  networking.hostName = "KingJalyn";
+  networking.hostName = "Afabel";
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 	
