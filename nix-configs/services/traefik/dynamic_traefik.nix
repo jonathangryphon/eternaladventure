@@ -1,5 +1,9 @@
 { config, ... }:
 
+# So what the heck does this file do?
+# Well, traefik uses "routers" to determine where external traffic goes. 
+# These are based on files? 
+
 let
   dynDir = "/var/lib/traefik/dynamic";
 in

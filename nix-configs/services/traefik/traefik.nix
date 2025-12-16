@@ -26,9 +26,16 @@ in
 	dashboard = true;
 	insecure = true; #TEMPORARY - internal only
 
-      providers.file = {
-        directory = "${dataDir}/dynamic";
-        watch = true;
+      providers = {
+	file = {
+          directory = "${dataDir}/dynamic";
+          watch = true;
+        };
+
+	docker = {
+          endpoint = "unix:///run/podman/podman.sock";
+          exposedByDefault = false;
+	};
       };
 
       certificatesResolvers.letsencrypt.acme = {
@@ -46,5 +53,13 @@ in
   systemd.services.traefik.serviceConfig = {
     StateDirectory = "traefik";
   };
+
+  systemd.services.podman.socket.wantedBy = [ "sockets.target" ];
+
+  services.traefik.staticConfigOptions.providers.docker = {
+    endpoint = "unix:///run/podman/podman.sock";
+    exposedByDefault = false;
+  };
+
 }
 
