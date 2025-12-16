@@ -4,12 +4,12 @@
   services.openssh = {
       enable = true;
       settings = {
-        Port  = [ 65555 ]; #security through obscurity to avoid default port scanning of 22
+        Port  = [ 65555 ]; # security through obscurity to avoid default port scanning of 22
         PasswordAuthentication = false;
         PubkeyAuthentication = true; # unnecessary I think, but declares intent
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
-        AllowUsers = [ "charity" ];
+        AllowUsers = [ "charity" "breakglass" ];
       };
     };
 
