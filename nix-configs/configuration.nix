@@ -6,9 +6,10 @@
     ./users.nix
     ./ssh.nix
     ./zfs.nix
+    ./traefik.nix
+    ./dynamic_traefik.nix
     ./podman-containers.nix
     ./services/ente.nix
-    ./services/traefik.nix
     ./services/headscale.nix
   ];
 
@@ -22,7 +23,6 @@
   # Networking & Firewall
   ############################
   networking.networkmanager.enable = true;
-
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   ############################
