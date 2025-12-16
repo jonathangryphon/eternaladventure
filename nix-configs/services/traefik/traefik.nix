@@ -22,6 +22,10 @@ in
         };
       };
 
+      api = {
+	dashboard = true;
+	insecure = true; #TEMPORARY - internal only
+
       providers.file = {
         directory = "${dataDir}/dynamic";
         watch = true;
@@ -36,6 +40,8 @@ in
       log.level = "INFO";
     };
   };
+
+  environment.etc."traefik/dynamic/.keep".text = "";
 
   systemd.services.traefik.serviceConfig = {
     StateDirectory = "traefik";
