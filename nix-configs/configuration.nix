@@ -7,10 +7,12 @@
     ./ssh.nix
     ./zfs.nix
     ./traefik.nix
-    ./dynamic_traefik.nix
     ./podman-containers.nix
     ./services/ente.nix
-    ./services/headscale.nix
+#    ./services/headscale.nix
+# supposedly headscale is really just vpn without exposing port 22, so in my use case,
+# it doesn't seem to matter, although it's unclear as to why so much... i mean there are
+# multiple things going on with that... so idk
   ];
 
   ############################
@@ -36,7 +38,7 @@
   # Security
   ############################
   security.sudo.enable = true;
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = false; # users do not have pws, only ssh keys for auth
 
   ############################
   # Auto Update
@@ -60,6 +62,7 @@
     git
     wget
     zfs
+    neofetch
   ];
 
   ############################
