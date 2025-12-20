@@ -24,7 +24,9 @@
   ############################
   # Networking & Firewall
   ############################
-  networking.networkmanager.enable = true;
+#  networking.networkmanager.enable = true;
+# chatgpt didn't like for a server, said unnecessary, instead do below
+  networking.useDHCP = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   ############################
