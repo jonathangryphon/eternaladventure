@@ -27,34 +27,30 @@ in
 	insecure = false; # don't even risk the true option, according to chatgpt
       };
 
-      providers = {
-	file = {
-          directory = "${dataDir}/dynamic";
-          watch = true;
-        };
-
+# so, turns out this is not neccessary when using dynamicConfigOptions 
+# unless I am manually dropping YAML files for Traefik, well, not as a file provider, docker still needed
+      providers = {       
 	docker = {
           endpoint = "unix:///run/podman/podman.sock";
           exposedByDefault = false;
 	};
       };
 
+      # ACME and HTTPS
       certificatesResolvers.letsencrypt.acme = {
         email = "eternaladventure@proton.me";
-        storage = "${dataDir}/acme.json";
+        storage = "${dataDir}/acme.json"; #acme still needs to know where to go inside StateDirectory despite it being declared
         httpChallenge.entryPoint = "web";
       };
 
       log.level = "INFO";
     };
+
+    serviceConfig = {
+      StateDirectory = "traefik";
+    };
   };
 
-  environment.etc."traefik/dynamic/.keep".text = "";
-
-  systemd.services.traefik.serviceConfig = {
-    StateDirectory = "traefik";
-  };
-  
   # Ensure Podman socket is available at boot.
   # Traefik's docker provider connects via /run/podman/podman.sock
   # and may start before the socket exists without this.
