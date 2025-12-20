@@ -24,7 +24,8 @@ in
 
       api = {
 	dashboard = true;
-	insecure = true; #TEMPORARY - internal only
+	insecure = false; # don't even risk the true option, according to chatgpt
+      };
 
       providers = {
 	file = {
@@ -53,12 +54,10 @@ in
   systemd.services.traefik.serviceConfig = {
     StateDirectory = "traefik";
   };
-
+  
+  # Ensure Podman socket is available at boot.
+  # Traefik's docker provider connects via /run/podman/podman.sock
+  # and may start before the socket exists without this.
   systemd.services.podman.socket.wantedBy = [ "sockets.target" ];
-
-  services.traefik.staticConfigOptions.providers.docker = {
-    endpoint = "unix:///run/podman/podman.sock";
-    exposedByDefault = false;
-  };
 
 }
