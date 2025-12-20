@@ -22,5 +22,5 @@
     passwordLocked = true; # unnecessary. prevents console login. shows intent of config. 
   };
 
-  users.groups.podman = { };
+  users.groups.podman = { traefik  };
 }
