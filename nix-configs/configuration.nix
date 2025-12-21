@@ -57,6 +57,19 @@
   };
 
   ############################
+  # DDNS with Oink for Porkbun
+  ############################
+  services.oink = {
+    enable = true;
+    apiKeyFile = "/etc/secrets/porkbun-api-key";
+    secretApiKeyFile = "/etc/secrets/porkbun-secret-api-key";
+    settings.interval = 900; # seconds between updates
+    settings.ttl = 600;      # DNS TTL
+    domains = [
+      { domain = "eternaladventure.xyz"; subdomain = ""; ttl = 600; }
+    ];
+  };
+  ############################
   # System Packages
   ############################
   environment.systemPackages = with pkgs; [
