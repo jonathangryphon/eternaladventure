@@ -61,14 +61,28 @@
   ############################
   services.oink = {
     enable = true;
-    apiKeyFile = "/etc/secrets/porkbun-api-key";
-    secretApiKeyFile = "/etc/secrets/porkbun-secret-api-key";
+    apiKeyFile = "/run/secrets/apikey";
+    secretApiKeyFile = "/run/secrets/secretapikey";
     settings.interval = 900; # seconds between updates
     settings.ttl = 600;      # DNS TTL
     domains = [
       { domain = "eternaladventure.xyz"; subdomain = ""; ttl = 600; }
     ];
   };
+
+  ############################
+  # SOPS SECRETS
+  ############################
+  sops.secrets."porkbun/apikey" = {
+    sopsFile = ./secrets/porkbun_secrets.yaml;
+    key = "porkbun.apikey";
+  };
+  
+  sops.secrets."porkbun/secretapikey" = {
+    sopsFile = ./secrets/porkbun_secrets.yaml;
+    key = "porkbun.secretapikey";
+  };
+
   ############################
   # System Packages
   ############################
