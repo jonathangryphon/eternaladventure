@@ -3,20 +3,23 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/zfs.nix
+    ./modules/podman.nix
+    ./modules/ssh.nix
+    ./modules/traefik.nix
+    ./modules/oink_ddns.nix
+    ./modules/services/ente.nix
+    ./modules/services/traefik-dashboard.nix
+#   ./modules/services/headscale.nix   
     ./users.nix
-    ./ssh.nix
-#    ./zfs.nix
-    ./traefik.nix
-#    ./oink_ddns.nix
-    ./podman-containers.nix
-#    ./sops-secrets.nix
-    ./services/ente.nix
-#    ./services/headscale.nix
-# supposedly headscale is really just vpn without exposing port 22, so in my use case,
-# it doesn't seem to matter, although it's unclear as to why so much... i mean there are
-# multiple things going on with that... so idk
-  # sops-nix import
-  "${(import ./nix/sources.nix).sops-nix}/modules/sops"
+    ./secrets/porkbun_secrets.yaml
+    ./nix/sources.json
+    ./nix/sources.nix
+    ./config/sops.yaml
+#   ./sops-secrets.nix
+  
+    # sops-nix import via niv
+    "${(import ./nix/sources.nix).sops-nix}/modules/sops"
   ];
 
   ############################
