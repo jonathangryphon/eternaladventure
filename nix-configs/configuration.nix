@@ -7,9 +7,9 @@
     ./ssh.nix
 #    ./zfs.nix
     ./traefik.nix
-    ./oink_ddns.nix
+#    ./oink_ddns.nix
     ./podman-containers.nix
-    ./sops-secrets.nix
+#    ./sops-secrets.nix
     ./services/ente.nix
 #    ./services/headscale.nix
 # supposedly headscale is really just vpn without exposing port 22, so in my use case,
