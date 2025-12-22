@@ -13,6 +13,8 @@
 # supposedly headscale is really just vpn without exposing port 22, so in my use case,
 # it doesn't seem to matter, although it's unclear as to why so much... i mean there are
 # multiple things going on with that... so idk
+  # sops-nix import
+  "${(import ./nix/sources.nix).sops-nix}/modules/sops"
   ];
 
   ############################
@@ -92,6 +94,7 @@
     wget
     zfs
     neofetch
+    sops
   ];
 
   ############################
