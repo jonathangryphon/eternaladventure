@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,  ... }:
 
 
 let
@@ -18,11 +18,8 @@ in
     ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./users.nix
-    ./secrets/porkbun_secrets.yaml
-    ./nix/sources.json
     ./nix/sources.nix
-    ./config/sops.yaml
-
+    ]
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
       ./modules/zfs.nix
@@ -85,7 +82,6 @@ in
     vim
     git
     wget
-    zfs
     neofetch
     sops
   ];
@@ -93,5 +89,5 @@ in
   ############################
   # First NixOS version installed
   ############################
-  system.stateVersion = "";
+  system.stateVersion = "25.11";
 };
