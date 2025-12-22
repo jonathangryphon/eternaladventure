@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ./users.nix
     ./ssh.nix
-    ./zfs.nix
+#    ./zfs.nix
     ./traefik.nix
     ./podman-containers.nix
     ./services/ente.nix
