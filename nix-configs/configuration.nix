@@ -46,7 +46,7 @@ in
 #  networking.networkmanager.enable = true;
 # chatgpt didn't like for a server, said unnecessary, instead do below
   networking.useDHCP = true;
-  networking.firewall.allowedTCPPorts = [ 80 443 62022 ]; # 62022 is personal ssh port
+  networking.firewall.allowedTCPPorts = [ 80 443 ]; # ssh port is defined in /modules/ssh.nix
 
   ############################
   # Host & Timezone
