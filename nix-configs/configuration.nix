@@ -1,25 +1,40 @@
 { config, pkgs, ... }:
 
+
+let
+  ############################
+  # BOOTSTRAP FLAGS
+  ############################
+  zfsPoolReady = false; # flip to true AFTER creating ZFS pool
+  enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
+in
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/zfs.nix
     ./modules/podman.nix
     ./modules/ssh.nix
     ./modules/traefik.nix
     ./modules/oink_ddns.nix
     ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
-#   ./modules/services/headscale.nix   
     ./users.nix
     ./secrets/porkbun_secrets.yaml
     ./nix/sources.json
     ./nix/sources.nix
     ./config/sops.yaml
-#   ./sops-secrets.nix
-  
+
+    # ZFS-dependent config 
+    ++ lib.optionals zfsPoolReady [
+      ./modules/zfs.nix
+    ]
+    # Secrets + secret-dependent services configs
+    ++ lib.optionals enableSops [
+    ./sops-secrets.nix
+    ./modules/oink.nix
+
     # sops-nix import via niv
     "${(import ./nix/sources.nix).sops-nix}/modules/sops"
+    ]
   ];
 
   ############################
