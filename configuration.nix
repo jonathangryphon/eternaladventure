@@ -19,21 +19,20 @@ in
     ./modules/services/traefik-dashboard.nix
     ./users.nix
     ./nix/sources.nix
-    
+  ]  
     # ZFS-dependent config 
-    ++ optionals zfsPoolReady [
+    ++ (optionals zfsPoolReady [
       ./modules/zfs.nix
-    ]
+    ])
     # Secrets + secret-dependent services configs
-    ++ optionals enableSops [
+    ++ (optionals enableSops [
     ./sops-secrets.nix
     ./modules/oink.nix
     ./modules/wifi.nix
  
     # sops-nix import via niv
     "${(import ./nix/sources.nix).sops-nix}/modules/sops"
-    ]
-  ];
+    ])
 
   ############################
   # Boot
