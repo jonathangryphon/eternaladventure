@@ -1,4 +1,4 @@
-{ config, pkgs, lib,  ... }:
+{config, pkgs, lib,  ... }:
 
 
 let
@@ -7,6 +7,10 @@ let
   ############################
   zfsPoolReady = false; # flip to true AFTER creating ZFS pool
   enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
+  sops-nix = builtins.fetchTarball {
+    url = https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
+    sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
+  };
 in
 {
   imports =  with lib; [
@@ -29,9 +33,9 @@ in
     ./sops-secrets.nix
     ./modules/oink.nix
     ./modules/wifi.nix
- 
-    # sops-nix import via niv
-    "${(import ./nix/sources.nix).sops-nix}/modules/sops"
+
+    # Obtain sops-nix via fetchTarball
+    (import "${sops-nix}/modules/sops") 
     ]);
 
   ############################
@@ -84,6 +88,7 @@ in
     wget
     neofetch
     sops
+    age
   ];
 
   ############################
