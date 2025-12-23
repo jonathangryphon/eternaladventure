@@ -35,7 +35,7 @@ in
     ./modules/wifi.nix
 
     # Obtain sops-nix via fetchTarball
-    (import "${sops-nix}/modules/sops") 
+    sopsNix/modules/sops
     ]);
 
   ############################
@@ -74,8 +74,8 @@ in
     persistent = true;       # keeps schedule after reboots
     allowReboot = true;      # reboot automatically if needed (optional)
     rebootWindow = {         # optional safe reboot window
-      lower = "02:00";
-      upper = "03:00";
+      lower = "0200";
+      upper = "0300";
     };
   };
 
