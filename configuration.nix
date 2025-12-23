@@ -7,13 +7,13 @@ let
   ############################
   zfsPoolReady = false; # flip to true AFTER creating ZFS pool
   enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
-  sops-nix = builtins.fetchTarball {
-    url = https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
+  sopsNix = builtins.fetchTarball {
+    url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
     sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
   };
 in
 {
-  imports =  with lib; [
+  imports = [
     ./hardware-configuration.nix
     ./modules/podman.nix
     ./modules/ssh.nix
@@ -25,18 +25,18 @@ in
     ./nix/sources.nix
   ]  
     # ZFS-dependent config 
-    ++ (optionals zfsPoolReady [
+    ++ lib.optionals zfsPoolReady [
       ./modules/zfs.nix
-    ])
+    ]
     # Secrets + secret-dependent services configs
-    ++ (optionals enableSops [
+    ++ lib.optionals enableSops [
     ./sops-secrets.nix
     ./modules/oink.nix
     ./modules/wifi.nix
 
     # Obtain sops-nix via fetchTarball
     sopsNix/modules/sops
-    ]);
+    ];
 
   ############################
   # Boot
@@ -74,8 +74,8 @@ in
     persistent = true;       # keeps schedule after reboots
     allowReboot = true;      # reboot automatically if needed (optional)
     rebootWindow = {         # optional safe reboot window
-      lower = "0200";
-      upper = "0300";
+      lower = "02:00";
+      upper = "03:00";
     };
   };
 
