@@ -32,7 +32,7 @@ in
  
     # sops-nix import via niv
     "${(import ./nix/sources.nix).sops-nix}/modules/sops"
-    ])
+    ]);
 
   ############################
   # Boot
@@ -90,4 +90,4 @@ in
   # First NixOS version installed
   ############################
   system.stateVersion = "25.11";
-};
+}

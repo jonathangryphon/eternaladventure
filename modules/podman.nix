@@ -12,7 +12,7 @@
   };
   
   systemd.sockets.podman = {
-    wantedBy [ "sockets.target" ];
+    wantedBy = [ "sockets.target" ];
     socketConfig = {
       ListenStream = "/run/podman/podman.sock";
       SocketMode = "06600";
