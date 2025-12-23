@@ -19,10 +19,9 @@ in
     ./modules/ssh.nix
     ./modules/traefik.nix
     ./modules/oink_ddns.nix
-    ./modules/services/ente.nix
+#    ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./users.nix
-    ./nix/sources.nix
   ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [

@@ -44,10 +44,7 @@ in
       };
 
       log.level = "INFO";
-    };
-
-    serviceConfig = {
-      StateDirectory = "traefik";
+      dataDir = "/var/lib/traefik";
     };
   };
 
