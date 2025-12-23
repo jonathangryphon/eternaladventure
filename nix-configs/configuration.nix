@@ -28,7 +28,8 @@ in
     ++ lib.optionals enableSops [
     ./sops-secrets.nix
     ./modules/oink.nix
-
+    ./modules/wifi.nix
+ 
     # sops-nix import via niv
     "${(import ./nix/sources.nix).sops-nix}/modules/sops"
     ]
