@@ -9,7 +9,7 @@ let
   enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
 in
 {
-  imports with lib; [
+  imports =  with lib; [
     ./hardware-configuration.nix
     ./modules/podman.nix
     ./modules/ssh.nix
