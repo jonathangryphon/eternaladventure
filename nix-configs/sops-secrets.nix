@@ -13,11 +13,11 @@
 
   sops.secrets."wifi/home-psk" = { 
     sopsFile = ./secrets/wifi_secrets.yaml;
-    key = wifi.home-wifi.psk";
+    key = "wifi.home-wifi.psk";
   };
   
   sops.secrets."wifi/sarah-psk" = { 
     sopsFile = ./secrets/wifi_secrets.yaml;
-    key = wifi.sarah-wifi.psk";
+    key = "wifi.sarah-wifi.psk";
   };
 }

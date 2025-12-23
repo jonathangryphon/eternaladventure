@@ -9,7 +9,7 @@ let
   enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
 in
 {
-  imports = [
+  imports with lib; [
     ./hardware-configuration.nix
     ./modules/podman.nix
     ./modules/ssh.nix
@@ -19,13 +19,13 @@ in
     ./modules/services/traefik-dashboard.nix
     ./users.nix
     ./nix/sources.nix
-    ]
+    
     # ZFS-dependent config 
-    ++ lib.optionals zfsPoolReady [
+    ++ optionals zfsPoolReady [
       ./modules/zfs.nix
     ]
     # Secrets + secret-dependent services configs
-    ++ lib.optionals enableSops [
+    ++ optionals enableSops [
     ./sops-secrets.nix
     ./modules/oink.nix
     ./modules/wifi.nix

@@ -2,8 +2,8 @@
 
 let
   wifiNetworks = [
-    { name = "home-wifi";   ssid = "Zvezda Wifi";       pskFile = "/run/secrets/wifi/home-wifi-psk"; }
-    { name = "sarah-wifi"; ssid = "";  pskFile = "/run/secrets/wifi/sarah-wifi-psk"; }
+    { name = "home-wifi";   ssid = "Zvezda Wifi";       pskFile = "/run/secrets/wifi/home-psk"; }
+    { name = "sarah-wifi"; ssid = "";  pskFile = "/run/secrets/wifi/sarah-psk"; }
   ];
 in {
   networking.networkmanager.enable = true;
