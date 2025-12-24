@@ -42,8 +42,12 @@ in
         email = "eternaladventure@proton.me";
         storage = "${dataDir}/acme.json"; #acme still needs to know where to go inside StateDirectory despite it being declared
         httpChallenge.entryPoint = "web";
+
+        # Server for testing purposes
+        caServer = "https://acme-staging-v02.api.letsencrypt.org/directory";
       };
 
+      accessLog = { }; # enabled
       log.level = "INFO";
     };
   };
