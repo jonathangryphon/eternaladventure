@@ -28,6 +28,7 @@ in
     ]
     # Secrets + secret-dependent services configs
     ++ lib.optionals enableSops [
+    ./modules/sops.nix
     ./sops-secrets.nix
     ./modules/oink_ddns.nix
     ./modules/wifi.nix
@@ -80,6 +81,10 @@ in
   ############################
   # System Packages
   ############################
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -92,7 +97,10 @@ in
   ############################
   # SOPS Key File Location
   ############################
-  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
+#  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
+  config = lib.mkIf enableSops { 
+    sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
+  }
 
   ############################
   # First NixOS version installed
