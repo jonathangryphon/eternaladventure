@@ -18,7 +18,6 @@ in
     ./modules/podman.nix
     ./modules/ssh.nix
     ./modules/traefik.nix
-    ./modules/oink_ddns.nix
 #    ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./users.nix
@@ -30,7 +29,7 @@ in
     # Secrets + secret-dependent services configs
     ++ lib.optionals enableSops [
     ./sops-secrets.nix
-    ./modules/oink.nix
+    ./modules/oink_ddns.nix
     ./modules/wifi.nix
 
     # Obtain sops-nix via fetchTarball

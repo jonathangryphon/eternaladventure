@@ -6,6 +6,7 @@ in
 {
   services.traefik = {
     enable = true;
+    dataDir = dataDir;
 
     staticConfigOptions = {
       entryPoints = {
@@ -44,7 +45,6 @@ in
       };
 
       log.level = "INFO";
-      dataDir = "/var/lib/traefik";
     };
   };
 

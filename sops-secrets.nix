@@ -9,11 +9,11 @@
     sopsFile = ./secrets/porkbun_secrets.yaml;
   };
 
-  sops.secrets."wifi/home-wifi-psk" = { 
+  sops.secrets."wifi/home-wifi/psk" = { 
     sopsFile = ./secrets/wifi_secrets.yaml;
   };
   
-  sops.secrets."wifi/sarah-wifi-psk" = { 
+  sops.secrets."wifi/sarah-wifi/psk" = { 
     sopsFile = ./secrets/wifi_secrets.yaml;
     # key = "wifi.sarah-wifi.psk"; # this key entry on each thing was erroring out because, essentially, sops was trying to eval the key twice. Once with the top line [sops.secrets."" =] and once with the key = bit. so it's entirely unnecessary
   };
