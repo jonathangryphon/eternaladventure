@@ -1,33 +1,36 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
-let
-  wifiNetworks = [
-    { name = "home-wifi";   ssid = "Zvezda Wifi";       pskFile = "/run/secrets/wifi/home-psk"; }
-    { name = "sarah-wifi"; ssid = "";  pskFile = "/run/secrets/wifi/sarah-psk"; }
-  ];
-in {
+{
   networking.networkmanager.enable = true;
 
-  networking.networkmanager.ensureProfiles = lib.listToAttrs (map (network: {
-    name = network.name;
-    value = {
+  networking.networkmanager.ensureProfiles.profiles = {
+    "home-wifi" = {
       connection = {
-        id = network.name;
+        id = "home-wifi";
+        permissions = "";
         type = "wifi";
-        interface-name = "wlan0"; # adjust to your interface
         autoconnect = true;
+        interfaceName = "wlan0"; # adjust to your interface
       };
-      wifi = {
-        ssid = network.ssid;
-        mode = "infrastructure";
-      };
-      wifi-security = {
-        key-mgmt = "wpa-psk";
-        psk-file = network.pskFile;
-      };
-      ipv4.method = "auto";
-      ipv6.method = "auto";
+      ipv4 = { method = "auto"; };
+      ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
+      wifi = { mode = "infrastructure"; ssid = "Zvezda Wifi"; };
+      wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/home-psk"; };
     };
-  ) wifiNetworks);
+
+    "sarah-wifi" = {
+      connection = {
+        id = "sarah-wifi";
+        permissions = "";
+        type = "wifi";
+        autoconnect = true;
+        interfaceName = "wlan0"; # adjust if needed
+      };
+      ipv4 = { method = "auto"; };
+      ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
+      wifi = { mode = "infrastructure"; ssid = "Not Enough Cats"; };
+      wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/sarah-psk"; };
+    };
+  };
 }
 
