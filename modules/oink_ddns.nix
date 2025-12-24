@@ -8,6 +8,7 @@
     settings.ttl = 600;      # DNS TTL
     domains = [
       { domain = "eternaladventure.xyz"; subdomain = ""; ttl = 600; }
+      { domain = "eternaladventure.xyz"; subdomain = "*"; ttl = 600; }
     ];
   };
 }
