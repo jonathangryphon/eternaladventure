@@ -98,9 +98,9 @@ in
   # SOPS Key File Location
   ############################
 #  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
-  config = lib.mkIf enableSops { 
-    sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
-  }
+ # config = lib.mkIf enableSops { 
+  #  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
+  #}
 
   ############################
   # First NixOS version installed
