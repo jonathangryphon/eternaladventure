@@ -46,9 +46,7 @@ in
   ############################
   # Networking & Firewall
   ############################
-#  networking.networkmanager.enable = true;
-# chatgpt didn't like for a server, said unnecessary, instead do below
-#  networking.useDHCP = true; # so I guess networkmanager takes over and this conflicts with it. see wifi.nix
+  # see modules/wifi.nix for Networking Configuration
   networking.firewall.allowedTCPPorts = [ 80 443 ]; # ssh port is defined in /modules/ssh.nix
 
   ############################
@@ -93,14 +91,6 @@ in
     sops
     age
   ];
-
-  ############################
-  # SOPS Key File Location
-  ############################
-#  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
- # config = lib.mkIf enableSops { 
-  #  sops.age.keyFile = "/etc/nixos/secrets/keys.txt";
-  #}
 
   ############################
   # First NixOS version installed
