@@ -31,6 +31,19 @@
       wifi = { mode = "infrastructure"; ssid = "Not Enough Cats"; };
       wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/sarah-psk"; };
     };
+    
+    "koschka-wifi" = {
+      connection = {
+	id = "koschka-wifi";
+	permissions = "";
+	type = "wifi";
+	autoconnect = true;
+	interfaceName= "wlan0";
+      };
+      ipv4 = { method = "auto"; };
+      ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
+      wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/koshka-psk"; };
+    };
   };
 }
 
