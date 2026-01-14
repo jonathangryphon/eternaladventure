@@ -31,15 +31,18 @@ in
   # Mount Nextcloud or other self hosted general file storage solution
 
   # Optional: ZFS dataset properties
-  environment.etc."zfs-properties".text = ''
-    zfs set compression=lz4 ${pool}
-    zfs set atime=off ${pool}/photos
-  '';
+  #environment.etc."zfs-properties".text = ''
+   # zfs set compression=lz4 ${pool}
+    #zfs set atime=off ${pool}/photos
+  #'';
 
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
+    autoImport.enable = true
   };
 
-  networking.hostId = "4n2c8i5e"; #unique, required for zfs to avoid corruption somehow?
+  boot.supportedFilesystems = [ "zfs" ];
+
+  networking.hostId = "c2dfeb62"; #unique, required for zfs to avoid corruption somehow?
 }
