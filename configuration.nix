@@ -43,6 +43,12 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ZFS Requirements
+  boot.kernelModules [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.extraPools = [ "tank" ];
+  networking.hostId = "c2dfeb62";
+
   ############################
   # Networking & Firewall
   ############################

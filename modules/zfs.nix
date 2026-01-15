@@ -4,6 +4,10 @@ let
   pool = "tank";
 in
 {
+  # NixOS level requirements for ZFS things to even function
+  boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "c2dfeb62"; # unique and required for zfs to avoid corruption somehow
+
   # Mount pool root for simplified observability
   fileSystems."/tank" = {
     device = "tank";
@@ -39,10 +43,6 @@ in
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
-    autoImport.enable = true
+#    autoImport.enable = true # this does't seem real according to search.nixos.org
   };
-
-  boot.supportedFilesystems = [ "zfs" ];
-
-  networking.hostId = "c2dfeb62"; #unique, required for zfs to avoid corruption somehow?
 }
