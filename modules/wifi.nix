@@ -34,14 +34,15 @@
     
     "koschka-wifi" = {
       connection = {
-	id = "koschka-wifi";
-	permissions = "";
-	type = "wifi";
-	autoconnect = true;
-	interfaceName= "wlan0";
+        id = "koschka-wifi";
+        permissions = "";
+        type = "wifi";
+        autoconnect = true;
+        interfaceName= "wlan0";
       };
       ipv4 = { method = "auto"; };
       ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
+      wifi = { mode = "infrastructure"; ssid = "Cookies16"; };
       wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/koshka-psk"; };
     };
   };
