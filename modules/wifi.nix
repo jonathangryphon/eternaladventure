@@ -32,9 +32,9 @@
       wifi-security = { keyMgmt = "wpa-psk"; pskFile = "/run/secrets/wifi/sarah-psk"; };
     };
     
-    "koschka-wifi" = {
+    "koshka-wifi" = {
       connection = {
-        id = "koschka-wifi";
+        id = "koshka-wifi";
         permissions = "";
         type = "wifi";
         autoconnect = true;
