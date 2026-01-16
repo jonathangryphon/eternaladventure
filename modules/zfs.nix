@@ -4,9 +4,6 @@ let
   pool = "tank";
 in
 {
-  # NixOS level requirements for ZFS things to even function
-  boot.supportedFilesystems = [ "zfs" ];
-  networking.hostId = "c2dfeb62"; # unique and required for zfs to avoid corruption somehow
 
   # Mount pool root for simplified observability
   fileSystems."/tank" = {
