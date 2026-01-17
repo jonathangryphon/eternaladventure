@@ -21,4 +21,7 @@
   sops.secrets."wifi/koshka-wifi/psk" = {
     sopsFile = ./secrets/wifi_secrets.yaml;
   };
+  sops.secrets."nextcloud/admin_password" = {
+    sopsFile = ./secrets/nextcloud_secrets.yaml;
+  };
 }
