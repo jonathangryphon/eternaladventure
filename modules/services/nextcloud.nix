@@ -6,7 +6,7 @@
     https = true;
     hostName = "nextcloud.eternaladventure.xyz";
     config = {
-      adminpassFile = TODO;
+      adminpassFile = "/run/nextcloud_secrets/admin_password";
       dbtype = "sqlite";
     };
     dataDir = "/tank/services/nextcloud";
