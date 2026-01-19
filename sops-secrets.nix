@@ -23,5 +23,6 @@
   };
   sops.secrets."nextcloud/admin_password" = {
     sopsFile = ./secrets/nextcloud_secrets.txt.enc;
+    format = "binary";
   };
 }

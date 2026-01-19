@@ -6,7 +6,7 @@
     https = true;
     hostName = "nextcloud.eternaladventure.xyz";
     config = {
-      adminpassFile = "/run/nextcloud_secrets/admin_password";
+      adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       dbtype = "sqlite";
     };
     home = "/tank/services/nextcloud";
