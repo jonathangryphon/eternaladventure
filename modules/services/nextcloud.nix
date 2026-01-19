@@ -9,6 +9,6 @@
       adminpassFile = "/run/nextcloud_secrets/admin_password";
       dbtype = "sqlite";
     };
-    dataDir = "/tank/services/nextcloud";
+    home = "/tank/services/nextcloud";
   };
 }
