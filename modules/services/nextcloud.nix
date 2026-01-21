@@ -3,12 +3,33 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud32;
-    https = true;
+    https = false;
     hostName = "nextcloud.eternaladventure.xyz";
     config = {
       adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       dbtype = "sqlite";
     };
-    home = "/tank/services/nextcloud";
+    home = "/tank/services/nextcloud";   
+  };
+  
+  # Nginx default port change so that internally nextcloud is exposed at 8080
+  # Traefik then picks it up and routes traffic accordingly
+  services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [
+    { addr = "127.0.0.1";
+      port = 8080; }
+   ];
+
+  # Traefik Required Bits
+  services.traefik.dynamicConfigOptions.http.routers.nextcloud = {
+    rule = "Host(`nextcloud.eternaladventure.xyz`)";
+    entryPoints = [ "websecure" ];
+    service = "nextcloud-service";
+    tls.certResolver = "letsencrypt";
+  };
+
+  services.traefik.dynamicConfigOptions.http.services.nextcloud-service = {
+    loadBalancer.servers = [
+      { url = "http://127.0.0.1:8080"; }
+    ];
   };
 }
