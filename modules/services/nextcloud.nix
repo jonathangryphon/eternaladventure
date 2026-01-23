@@ -9,7 +9,12 @@
       adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       dbtype = "sqlite";
     };
-    home = "/tank/services/nextcloud";   
+    settings = {
+      overwriteprotocol = "https";
+      trusted_proxies = [ "127.0.0.1" ];
+    };
+    home = "/tank/services/nextcloud";
+    
   };
   
   # Nginx default port change so that internally nextcloud is exposed at 8080
