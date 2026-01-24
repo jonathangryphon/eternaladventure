@@ -23,7 +23,7 @@ in
     "${sopsNix}/modules/sops"
     ./sops-secrets.nix
     ./modules/sops.nix
-    ./modules/nextcloud.nix
+    ./modules/services/nextcloud.nix
 #    ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./users.nix

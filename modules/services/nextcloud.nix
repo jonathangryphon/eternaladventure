@@ -5,7 +5,7 @@
     package = pkgs.nextcloud32;
     https = false;
     hostName = "nextcloud.eternaladventure.xyz";
-    maxUploadSize = "50G"
+    maxUploadSize = "50G";
     config = {
       adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       dbtype = "sqlite";
