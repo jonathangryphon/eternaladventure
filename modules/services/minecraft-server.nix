@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = [
-    pkgs.papermcServers.papermc-1_21_9;
+    pkgs.papermcServers.papermc-1_21_10;
   ]
 
   services.minecraft-server = {
