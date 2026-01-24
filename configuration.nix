@@ -103,6 +103,7 @@ in
     neofetch
     sops
     age
+    htop
   ];
 
   ############################
