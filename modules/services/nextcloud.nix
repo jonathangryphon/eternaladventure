@@ -5,6 +5,7 @@
     package = pkgs.nextcloud32;
     https = false;
     hostName = "nextcloud.eternaladventure.xyz";
+    maxUploadSize = "50G"
     config = {
       adminpassFile = config.sops.secrets."nextcloud/admin_password".path;
       dbtype = "sqlite";
@@ -24,6 +25,8 @@
       port = 8080; }
    ];
 
+  services.nginx.clientMaxBodySize = "50G";
+ 
   # Traefik Required Bits
   services.traefik.dynamicConfigOptions.http.routers.nextcloud = {
     rule = "Host(`nextcloud.eternaladventure.xyz`)";
