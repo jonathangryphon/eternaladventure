@@ -13,7 +13,6 @@
     settings = {
       overwriteprotocol = "https";
       trusted_proxies = [ "127.0.0.1" ];
-      mail_domain = "gmail.com";
       mail_from_address = "noreply";
       mail_smtphost = "smtp.gmail.com";
       mail_smtpport = 465;
