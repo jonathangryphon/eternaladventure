@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-    services.maddy = {
+    services.stalwart-mail = {
         enable = true;
         openFirewall = true;
         hostname = "mail.eternaladventure.xyz"
@@ -22,6 +22,6 @@
             type = "passwd";
         }
 
-        
+
     }
 }

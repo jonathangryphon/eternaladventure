@@ -13,8 +13,15 @@
     settings = {
       overwriteprotocol = "https";
       trusted_proxies = [ "127.0.0.1" ];
+      mail_smtphost = "smtp.gmail.com";
+      mail_smtpport = 465;
+      mail_smtpsecure = "ssl";
+      mail_smtpauth = true;
+      mail_smtpname = "eternaladventure.recovery@gmail.com"    
     };
     home = "/tank/services/nextcloud";
+    
+    secrets.mail_smtppassword = "/run/secrets/nextcloud_smtppassword";
     
   };
   
