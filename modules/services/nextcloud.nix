@@ -17,7 +17,7 @@
       mail_smtpport = 465;
       mail_smtpsecure = "ssl";
       mail_smtpauth = true;
-      mail_smtpname = "eternaladventure.recovery@gmail.com"    
+      mail_smtpname = "eternaladventure.recovery@gmail.com";
     };
     home = "/tank/services/nextcloud";
     
