@@ -14,6 +14,6 @@
 
     serverProperties = {
         server-port = 33333;
-    }
+    };
   };
 }
