@@ -22,7 +22,7 @@
     };
     home = "/tank/services/nextcloud";
     
-    secrets.mail_smtppassword = "/run/secrets/smtp_password";
+    secrets.mail_smtppassword = "/run/secrets/smtp/password";
     
   };
   

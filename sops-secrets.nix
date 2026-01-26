@@ -27,7 +27,7 @@
     format = "binary";
   };
   
-  sops.secrets."nextcloud/smtp_password" = {
+  sops.secrets."smtp/password" = {
     sopsFile = ./secrets/nextcloud_smtppassword.yaml;
   };
 }
