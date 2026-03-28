@@ -48,7 +48,7 @@
         };
         ipv4 = { method = "auto"; };
         ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
-        wifi = { mode = "infrastructure"; ssid = "KOSHKA_SSID"; };
+        wifi = { mode = "infrastructure"; ssid = "$KOSHKA_SSID"; };
         wifi-security = { key-mgmt = "wpa-psk"; psk = "$KOSHKA_PSK"; };
       };
     };
