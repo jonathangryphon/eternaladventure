@@ -18,7 +18,7 @@ in
     ./modules/ssh.nix
     # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
     # "${sopsNix}/modules/sops"
-    inputs.sops-nix.nixosModules.sops
+    # sops-nix.nixosModules.sops (already imported in flake.nix)
     ./modules/sops.nix
     ./sops-secrets.nix
     ./users.nix
