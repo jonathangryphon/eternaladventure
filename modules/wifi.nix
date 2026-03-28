@@ -8,7 +8,7 @@
       config.sops.secrets.home-wifi.path
       config.sops.secrets.nano-wifi.path
       config.sops.secrets.koshka-wifi.path
-    ]
+    ];
     profiles = {
       "home-wifi" = {
         connection = {
