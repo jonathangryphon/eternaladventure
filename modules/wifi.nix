@@ -21,7 +21,7 @@
         ipv4 = { method = "auto"; };
         ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
         wifi = { mode = "infrastructure"; ssid = "$HOME_SSID"; };
-        wifi-security = { key-Mgmt = "wpa-psk"; psk = "$HOME_PSK"; };
+        wifi-security = { key-mgmt = "wpa-psk"; psk = "$HOME_PSK"; };
       };
 
       "nano-wifi" = {
@@ -35,7 +35,7 @@
         ipv4 = { method = "auto"; };
         ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
         wifi = { mode = "infrastructure"; ssid = "$NANO_SSID"; };
-        wifi-security = { key-mgmt = "wpa-psk"; pskFile = "$NANO_PSK"; };
+        wifi-security = { key-mgmt = "wpa-psk"; psk = "$NANO_PSK"; };
       };
       
       "koshka-wifi" = {
@@ -49,7 +49,7 @@
         ipv4 = { method = "auto"; };
         ipv6 = { method = "auto"; addrGenMode = "stable-privacy"; };
         wifi = { mode = "infrastructure"; ssid = "KOSHKA_SSID"; };
-        wifi-security = { key-mgmt = "wpa-psk"; pskFile = "$KOSHKA_PSK"; };
+        wifi-security = { key-mgmt = "wpa-psk"; psk = "$KOSHKA_PSK"; };
       };
     };
   };
