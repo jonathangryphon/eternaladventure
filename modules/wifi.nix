@@ -53,42 +53,5 @@
       };
     };
   };
-  systemd.services.nm-wifi-profiles = {
-  description = "Recreate NetworkManager WiFi profiles from sops secrets";
-  after = [ "sops-nix.service" "NetworkManager.service" "network.target" ];
-  requires = [ "sops-nix.service" "NetworkManager.service" ];
-  wantedBy = [ "multi-user.target" ];
-  serviceConfig = {
-    Type = "oneshot";
-    RemainAfterExit = true;
-    EnvironmentFile = [
-      config.sops.secrets.home-wifi.path
-      config.sops.secrets.nano-wifi.path
-      config.sops.secrets.koshka-wifi.path
-    ];
-  };
-  script = ''
-    upsert() {
-      local name=$1
-      local ssid=$2
-      local psk=$3
-      nmcli connection show "$name" &>/dev/null && \
-        nmcli connection delete "$name"
-      nmcli connection add \
-        type wifi \
-        con-name "$name" \
-        ssid "$ssid" \
-        wifi-sec.key-mgmt wpa-psk \
-        wifi-sec.psk "$psk" \
-        connection.autoconnect yes \
-        connection.permissions "" \
-        ifname wlan0
-    }
-
-    upsert "home-wifi"   "$HOME_SSID"   "$HOME_PSK"
-    upsert "nano-wifi"   "$NANO_SSID"   "$NANO_PSK"
-    upsert "koshka-wifi" "$KOSHKA_SSID" "$KOSHKA_PSK"
-  '';
-  };
 }
 
