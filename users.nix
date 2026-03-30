@@ -19,12 +19,12 @@
     extraGroups = [ "wheel" ]; # sudo access
   };
 
-  users.users.syncoid = {
-    isSystemUser = true;
-    group = "syncoid";
-    home = "/var/lib/syncoid";
-    createHome = true;
-    shell = pkgs.bash;
-  }
-  users.groups.syncoid = {};
+  #users.users.syncoid = {
+   # isSystemUser = true;
+    #group = "syncoid";
+    #home = "/var/lib/syncoid";
+    #createHome = true;
+    #shell = pkgs.bash;
+  #}
+  #users.groups.syncoid = {};
 }
