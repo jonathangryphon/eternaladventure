@@ -9,6 +9,7 @@
 
   services.syncoid = {
     enable = true;
+    commonArgs = [ "--debug" ];
     commands = {
       "tank/services" = {
         source = "syncoid@Afabel:tank/services";  # or IP address
