@@ -105,6 +105,10 @@ in
     age
     htop
     sanoid
+    pv
+    mbuffer
+    lzop
+    zstd
   ];
 
   ############################

@@ -9,10 +9,12 @@
 
   services.syncoid = { # creates the syncoid user which the pi can use to remote in for backup pulls
     enable = true;
+    commonArgs = [ "--debug" ];
   };
 
   services.sanoid = {
     enable = true;
+    extraArgs = [ "--debug" ];
     datasets = {
       "tank/services" = {
         recursive = true; # this covers all datasets beneath services
