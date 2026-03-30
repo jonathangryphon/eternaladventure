@@ -45,7 +45,7 @@ in
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
   # ZFS Pools
-  #boot.zfs.extraPools = [ "tank" ];
+  #boot.zfs.extraPools = [ "backup" ];
   # Since we have a Non-ZFS root (ext4 boot drive) this prevents scanning for what does not exist
   boot.zfs.forceImportRoot = false;
   # ZFS requires a Host ID 
