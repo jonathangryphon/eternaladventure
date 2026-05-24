@@ -109,7 +109,8 @@ in
     mbuffer
     lzop
     zstd
-  ];
+    ffmpeg 
+ ];
 
   ############################
   # First NixOS version installed
