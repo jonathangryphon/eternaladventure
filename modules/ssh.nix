@@ -3,7 +3,7 @@
 {
   services.openssh = {
       enable = true;
-      ports = [ 62022 ]; # security through obscurity to avoid default port 22 scanning via bots
+      ports = [ 62023 ]; # security through obscurity to avoid default port 22 scanning via bots
 
       settings = {
         PasswordAuthentication = false;
@@ -14,7 +14,7 @@
       };
     };
   
-  networking.firewall.allowedTCPPorts = [ 62022 ]; # open port for ssh
+  networking.firewall.allowedTCPPorts = [ 62023 ]; # open port for ssh
   
   # Associate SSH keys with users
   users.users.charity.openssh.authorizedKeys.keys = [
