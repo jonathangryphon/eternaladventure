@@ -110,6 +110,7 @@ in
     lzop
     zstd
     ffmpeg 
+    ffprobe
  ];
 
   ############################
