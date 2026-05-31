@@ -14,6 +14,7 @@
 
     serverProperties = {
         server-port = 33333;
+	online-mode = false; (disabled so others can join without mojang ver.)
     };
   };
 }
