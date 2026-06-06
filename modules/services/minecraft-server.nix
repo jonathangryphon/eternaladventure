@@ -15,7 +15,7 @@
     serverProperties = {
         server-port = 33333;
         online-mode = false; # (disabled so others can join without mojang ver.)
-        motd = "motd = "§2§l§oThe Eternal Adventure Server§r\n§aBased in Texas. Hosted by Jonathan. ☻"
+        motd = "§2§l§oThe Eternal Adventure Server§r\n§aBased in Texas. Hosted by Jonathan. ☻"
         view-distance = 32;
     };
   };
