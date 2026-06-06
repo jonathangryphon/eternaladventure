@@ -13,6 +13,7 @@
     jvmOpts = "-Xms8G -Xmx8G"; 
 
     serverProperties = {
+        difficulty = "hard";
         server-port = 33333;
         online-mode = false; # (disabled so others can join without mojang ver.)
         motd = "§2§l§oThe Eternal Adventure Server§r\n§aBased in Texas. Hosted by Jonathan. :D ";
