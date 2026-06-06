@@ -26,7 +26,7 @@
   services.traefik.dynamicConfigOptions.http.routers.dynmap = {
     rule = "Host(`map.eternaladventure.xyz`)";
     entryPoints = [ "websecure" ];
-    service = "nextcloud-service";
+    service = "dynmap";
     tls.certResolver = "letsencrypt";
   };
 
