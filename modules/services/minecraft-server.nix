@@ -22,4 +22,17 @@
         "rcon.port" = 33334;
     };
   };
+  
+  services.traefik.dynamicConfigOptions.http.routers.dynmap = {
+    rule = "Host(`map.eternaladventure.xyz`)";
+    entryPoints = [ "websecure" ];
+    service = "nextcloud-service";
+    tls.certResolver = "letsencrypt";
+  };
+
+  services.traefik.dynamicConfigOptions.http.services.dynmap-service = {
+    loadBalancer.servers = [
+      { url = "http://127.0.0.1:8123"; }
+    ];
+  };
 }

@@ -111,6 +111,7 @@ in
     zstd
     ffmpeg 
     exiftool
+    btop
  ];
 
   ############################
