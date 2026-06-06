@@ -30,7 +30,7 @@
     tls.certResolver = "letsencrypt";
   };
 
-  services.traefik.dynamicConfigOptions.http.services.dynmap-service = {
+  services.traefik.dynamicConfigOptions.http.services.dynmap = {
     loadBalancer.servers = [
       { url = "http://127.0.0.1:8123"; }
     ];
