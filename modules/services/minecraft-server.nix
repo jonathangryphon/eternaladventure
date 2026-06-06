@@ -15,6 +15,8 @@
     serverProperties = {
         server-port = 33333;
         online-mode = false; # (disabled so others can join without mojang ver.)
+        motd = "\u00a7aRunning out of Texas. \u263b\u00a7r\n\u00a7aFrom Jonathan. \u2600";
+        view-distance = 32;
     };
   };
 }
