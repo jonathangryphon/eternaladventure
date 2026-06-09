@@ -18,6 +18,7 @@
         online-mode = false; # (disabled so others can join without mojang ver.)
         motd = "§2§l§oThe Eternal Adventure Server§r\n§aBased in Texas. Hosted by Jonathan. :D ";
         view-distance = 32;
+        spawn-protection = 0;
         enable-rcon = true;
         "rcon.password" = "whatever123";
         "rcon.port" = 33334;
