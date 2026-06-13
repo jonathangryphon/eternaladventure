@@ -17,6 +17,18 @@
 #   After first rebuild, do the Garage bootstrap (see bottom of file),
 #   then fill in the garage key/secret _secret paths.
 
+# ---------------------------------------------------------------------------
+# KNOWN ISSUES / LATER REVIEW
+# ---------------------------------------------------------------------------
+# 1. Garage data directory permissions — NEEDS REVISIT
+#    Garage uses DynamicUser=yes so we can't chown to a named user.
+#    Current workaround: /tank/services/garage/data is chmod 777.
+#    This is too permissive. Proper fix options to investigate:
+#      a) Disable DynamicUser and create a static garage user instead
+#      b) Use BindPaths + a tmpfiles rule with the numeric UID
+#      c) Override the systemd service unit to use a static user
+#    See: https://www.freedesktop.org/software/systemd/man/DynamicUser.html
+
 { config, pkgs, ... }:
 
 {
@@ -47,6 +59,9 @@
       rpc_public_addr = "127.0.0.1:3901";
     };
   };
+
+  systemd.services.garage.serviceConfig.StateDirectory = "garage";
+  systemd.services.garage.serviceConfig.ReadWritePaths = [ "/tank/services/garage/data" ];
 
   # ---------------------------------------------------------------------------
   # 2. ENTE API (museum) — binds to 127.0.0.1:8080 by default
