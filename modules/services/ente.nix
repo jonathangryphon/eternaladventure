@@ -42,7 +42,7 @@
         api_bind_addr = "127.0.0.1:3903";
       };
 
-      rpc_secret = "testing";      
+      rpc_secret = "761ee0a7f448bbd20ab2fa6b8daa95607343d851105fc933b4df58dae22ef2df";      
       rpc_bind_addr = "127.0.0.1:3901";
       rpc_public_addr = "127.0.0.1:3901";
     };
