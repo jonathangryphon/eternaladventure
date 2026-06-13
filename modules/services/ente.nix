@@ -103,7 +103,7 @@
       internal = {
         # Lets you log in with OTP 123456 — no SMTP needed for first setup.
         # Change this to your actual email address.
-        hardcoded-ott.emails = [ "YOUR_EMAIL@example.com,123456" ];
+        hardcoded-ott.emails = [ "jonathangryphon@protonmail.com,123456" ];
 
         # Flip to true after you've created your account.
         disable-registration = false;
