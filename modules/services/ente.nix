@@ -110,14 +110,14 @@
         disable-registration = false;
       };
     
-      smtp = {
-        host = "smtp.gmail.com";
-        port = 465;
-        username = "eternaladventure.recovery@gmail.com";
-        password._secret = config.sops.secrets."smtp/password".path;
-        email = "eternaladventure.recovery@gmail.com";
-        encryption = "ssl";
-      };
+   #   smtp = {
+    #    host = "smtp.gmail.com";
+     #   port = 465;
+      #  username = "eternaladventure.recovery@gmail.com";
+       # password._secret = config.sops.secrets."smtp/password".path;
+        #email = "eternaladventure.recovery@gmail.com";
+      #  encryption = "ssl";
+     # };
     };
   };
 
