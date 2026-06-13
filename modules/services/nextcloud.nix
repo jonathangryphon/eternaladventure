@@ -30,7 +30,7 @@
   # Traefik then picks it up and routes traffic accordingly
   services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [
     { addr = "127.0.0.1";
-      port = 8080; }
+      port = 8090; }
    ];
 
   services.nginx.clientMaxBodySize = "50G";
@@ -45,7 +45,7 @@
 
   services.traefik.dynamicConfigOptions.http.services.nextcloud-service = {
     loadBalancer.servers = [
-      { url = "http://127.0.0.1:8080"; }
+      { url = "http://127.0.0.1:8090"; }
     ];
   };
 }
