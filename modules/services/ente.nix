@@ -32,6 +32,9 @@
 { config, pkgs, ... }:
 
 {
+
+  services.postgresql.dataDir = "/tank/services/postgresql" # configures posgresql to use zfs array for metadata
+
   # ---------------------------------------------------------------------------
   # 1. GARAGE — S3-compatible object storage
   # ---------------------------------------------------------------------------
@@ -198,8 +201,6 @@
       ente-cast-service.loadBalancer.servers     = [{ url = "http://127.0.0.1:8082"; }];
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
 
 # =============================================================================
