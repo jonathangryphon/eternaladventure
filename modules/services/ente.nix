@@ -75,7 +75,7 @@
 
     settings = {
   
-      http-port: 2112;
+      http-port = 2112;
 
       s3 = {
         are_local_buckets   = true;
