@@ -33,7 +33,7 @@
 
 {
 
-  services.postgresql.dataDir = "/tank/services/postgresql" # configures posgresql to use zfs array for metadata
+  services.postgresql.dataDir = "/tank/services/postgresql"; # configures posgresql to use zfs array for metadata
 
   # ---------------------------------------------------------------------------
   # 1. GARAGE — S3-compatible object storage
