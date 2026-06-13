@@ -41,6 +41,9 @@
       admin = {
         api_bind_addr = "127.0.0.1:3903";
       };
+      
+      rpc_bind_addr = "127.0.0.1:3901";
+      rpc_public_addr = "127.0.0.1:3901";
     };
   };
 
