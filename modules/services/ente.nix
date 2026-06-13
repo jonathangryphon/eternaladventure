@@ -82,7 +82,7 @@
         # "b2-eu-cen" is a required fixed key name in museum.
         # The actual backend can be any S3-compatible store.
         "b2-eu-cen" = {
-          endpoint = "http://127.0.0.1:3900";
+          endpoint = "https://s3.eternaladventure.xyz";
           region   = "garage";
           bucket   = "ente";
           # Populate these files after Garage bootstrap (see bottom of file)
@@ -152,6 +152,12 @@
   # ---------------------------------------------------------------------------
   services.traefik.dynamicConfigOptions.http = {
     routers = {
+      garage-s3 = {
+        rule = "Host(`s3.eternaladventure.xyz`)";
+        entryPoints = [ "websecure" ];
+        service = "garage-s3-service";
+        tls.certResolver = "letsencrypt";
+      };
       ente-api = {
         rule        = "Host(`api.eternaladventure.xyz`)";
         entryPoints = [ "websecure" ];
@@ -183,8 +189,9 @@
         tls.certResolver = "letsencrypt";
       };
     };
-
+    
     services = {
+      garage-s3-service.loadBalancer.servers     = [{ url = "http://127.0.0.1:3900"; }];
       ente-api-service.loadBalancer.servers      = [{ url = "http://127.0.0.1:8080"; }];
       ente-photos-service.loadBalancer.servers   = [{ url = "http://127.0.0.1:8083"; }];
       ente-accounts-service.loadBalancer.servers = [{ url = "http://127.0.0.1:8081"; }];
