@@ -32,4 +32,24 @@
   sops.secrets."smtp/password" = {
     sopsFile = ./secrets/nextcloud_smtppassword.yaml;
   };
+  sops.secrets."ente/key_encryption" = {
+    sopsFile = ./secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/key_hash" = {
+    sopsFile = ./secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/jwt_secret" = {
+    sopsFile = ./secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/garage_access_key_id" = {
+    sopsFile = ./secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/garage_secret_access_key" = {
+    sopsFile = ./secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
 }

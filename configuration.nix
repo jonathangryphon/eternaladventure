@@ -24,7 +24,7 @@ in
     ./sops-secrets.nix
     ./modules/sops.nix
     ./modules/services/nextcloud.nix
-#    ./modules/services/ente.nix
+    ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./users.nix
   ]  
