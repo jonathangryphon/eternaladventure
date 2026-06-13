@@ -75,8 +75,6 @@
 
     settings = {
   
-      http-port = 2112;
-
       s3 = {
         are_local_buckets   = true;
         use_path_style_urls = true;
@@ -187,7 +185,7 @@
     };
 
     services = {
-      ente-api-service.loadBalancer.servers      = [{ url = "http://127.0.0.1:2112"; }];
+      ente-api-service.loadBalancer.servers      = [{ url = "http://127.0.0.1:8080"; }];
       ente-photos-service.loadBalancer.servers   = [{ url = "http://127.0.0.1:8083"; }];
       ente-accounts-service.loadBalancer.servers = [{ url = "http://127.0.0.1:8081"; }];
       ente-cast-service.loadBalancer.servers     = [{ url = "http://127.0.0.1:8082"; }];
