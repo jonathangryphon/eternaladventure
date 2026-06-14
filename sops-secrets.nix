@@ -56,10 +56,6 @@
     sopsFile = ./secrets/ente_secrets.yaml;
     owner = "ente";
   };
-  sops.secrets."minecraft/rcon_password" = {
-    sopsFile = ./secrets/minecraft_secrets.yaml;
-    owner = "minecraft";  # or whatever user runs your MC server
-  };
   sops.secrets."ente/smtp/password" = {
     sopsFile = ./secrets/ente_smtp.yaml;
   };
