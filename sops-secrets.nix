@@ -59,8 +59,10 @@
   };
   sops.secrets."ente_smtp/password" = {
     sopsFile = ./secrets/ente_smtp.yaml;
+    owner = "ente";
   };
   sops.secrets."ente_smtp/username" = {
     sopsFile = ./secrets/ente_smtp.yaml;
+    owner = "ente";
   };
 }
