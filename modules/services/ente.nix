@@ -57,7 +57,7 @@
         api_bind_addr = "127.0.0.1:3903";
       };
 
-      rpc_secret = "761ee0a7f448bbd20ab2fa6b8daa95607343d851105fc933b4df58dae22ef2df";      
+      rpc_secret_file = config.sops.secrets."ente/garage_rpc_secret".path;      
       rpc_bind_addr = "127.0.0.1:3901";
       rpc_public_addr = "127.0.0.1:3901";
     };
@@ -110,14 +110,14 @@
         disable-registration = false;
       };
     
-   #   smtp = {
-    #    host = "smtp.gmail.com";
-     #   port = 465;
-      #  username = "eternaladventure.recovery@gmail.com";
-       # password._secret = config.sops.secrets."smtp/password".path;
-        #email = "eternaladventure.recovery@gmail.com";
-      #  encryption = "ssl";
-     # };
+      smtp = {
+        host = "smtp.gmail.com";
+        port = 465;
+        username._secret = config.sops.secrets."ente/smtp/username".path;
+        password._secret = config.sops.secrets."ente/smtp/password".path;
+        email._secret = config.sops.secrets."ente/smtp/username".path;
+        encryption = "ssl";
+      };
     };
   };
 
