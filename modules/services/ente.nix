@@ -57,7 +57,7 @@
         api_bind_addr = "127.0.0.1:3903";
       };
 
-      rpc_secret_file = config.sops.secrets."ente/garage_rpc_secret".path;      
+      rpc_secret_file = config.sops.secrets."ente/garage_rpc_key".path;      
       rpc_bind_addr = "127.0.0.1:3901";
       rpc_public_addr = "127.0.0.1:3901";
     };
