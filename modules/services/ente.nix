@@ -113,9 +113,9 @@
       smtp = {
         host = "smtp.gmail.com";
         port = 465;
-        username._secret = config.sops.secrets."ente/smtp/username".path;
-        password._secret = config.sops.secrets."ente/smtp/password".path;
-        email._secret = config.sops.secrets."ente/smtp/username".path;
+        username._secret = config.sops.secrets."ente_smtp/username".path;
+        password._secret = config.sops.secrets."ente_smtp/password".path;
+        email._secret = config.sops.secrets."ente_smtp/username".path;
         encryption = "ssl";
       };
     };

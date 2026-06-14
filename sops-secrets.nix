@@ -56,10 +56,10 @@
     sopsFile = ./secrets/ente_secrets.yaml;
     owner = "ente";
   };
-  sops.secrets."smtp/password" = {
+  sops.secrets."ente_smtp/password" = {
     sopsFile = ./secrets/ente_smtp.yaml;
   };
-  sops.secrets."smtp/username" = {
+  sops.secrets."ente_smtp/username" = {
     sopsFile = ./secrets/ente_smtp.yaml;
   };
 }
