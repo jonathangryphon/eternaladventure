@@ -12,6 +12,7 @@
     };
     settings = {
       overwriteprotocol = "https";
+      "overwrite.cli.url" = "https://nextcloud.eternaladventure.xyz";
       trusted_proxies = [ "127.0.0.1" ];
       mail_from_address = "noreply";
       mail_smtphost = "smtp.gmail.com";
