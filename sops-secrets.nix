@@ -54,7 +54,8 @@
   };
   sops.secrets."ente/garage_rpc_key" = {
     sopsFile = ./secrets/ente_secrets.yaml;
-    mode = "0444";
+    owner = "garage";
+    mode = "0600";
   };
   sops.secrets."ente_smtp/password" = {
     sopsFile = ./secrets/ente_smtp.yaml;

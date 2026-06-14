@@ -29,7 +29,7 @@
 #      c) Override the systemd service unit to use a static user
 #    See: https://www.freedesktop.org/software/systemd/man/DynamicUser.html
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -38,6 +38,17 @@
   # ---------------------------------------------------------------------------
   # 1. GARAGE — S3-compatible object storage
   # ---------------------------------------------------------------------------
+  
+  users.users.garage = {
+    isSystemUser = true;
+    group = "garage";
+  };
+  users.groups.garage = {};
+
+  systemd.services.garage.serviceConfig.User = lib.mkForce "garage";
+  systemd.services.garage.serviceConfig.Group = lib.mkForce "garage";
+  systemd.services.garage.serviceConfig.DynamicUser = lib.mkForce false;
+  
   services.garage = {
     enable = true;
     package = pkgs.garage;
