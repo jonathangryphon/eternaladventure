@@ -42,11 +42,22 @@
     entryPoints = [ "websecure" ];
     service = "nextcloud-service";
     tls.certResolver = "letsencrypt";
+    middlewares = [ "nextcloud-middleware" ];
   };
+
+  services.traefik.dynamicConfigOptions.http.middlewares.nextcloud-middleware = {
+    buffering = {
+      maxRequestBodyBytes = 0;  # unlimited
+      memRequestBodyBytes = 0;
+      retryExpression = "IsNetworkError() && Attempts() < 2";
+    };
+  };
+
 
   services.traefik.dynamicConfigOptions.http.services.nextcloud-service = {
     loadBalancer.servers = [
       { url = "http://127.0.0.1:8090"; }
     ];
+    responseForwarding.flushInterval = "100ms";
   };
 }

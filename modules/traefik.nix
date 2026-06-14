@@ -20,6 +20,11 @@ in
 
         websecure = {
           address = ":443";
+          transport.respondingTimeouts = {
+            readTimeout = "3600s";
+            writeTimeout = "3600s";
+            idleTimeout = "3600s";
+          };
         };
       };
 
