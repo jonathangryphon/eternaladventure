@@ -5,8 +5,8 @@ let
   ############################
   # BOOTSTRAP FLAGS
   ############################
-  zfsPoolReady = false; # flip to true AFTER creating ZFS pool
-  enableSops = false; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
+  zfsPoolReady = true; # flip to true AFTER creating ZFS pool
+  enableSops = true; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
   sopsNix = builtins.fetchTarball {
     url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
     sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
