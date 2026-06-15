@@ -65,7 +65,7 @@ in
   ############################
   # Host & Timezone
   ############################
-  networking.hostName = "Afabel";
+  # networking.hostName = "Afabel"; added in hosts file for flake
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 	
