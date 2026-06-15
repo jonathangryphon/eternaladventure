@@ -90,6 +90,10 @@ in
   };
 
   ############################
+  # Flake support
+  ############################
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  ############################
   # System Packages
   ############################
   nixpkgs.config = {
