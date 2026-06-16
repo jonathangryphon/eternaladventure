@@ -1,6 +1,5 @@
 {config, pkgs, lib,  sops-nix, ... }:
 
-
 let
   ############################
   # BOOTSTRAP FLAGS
