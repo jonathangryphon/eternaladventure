@@ -10,7 +10,7 @@
   outputs = { self, nixpkgs, sops-nix }: {
     nixosConfigurations = {
 
-      Afabel = nixpkgs.lib.nixosSystem {
+      afabel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [ 
@@ -19,7 +19,7 @@
         ];
       };
 
-      Rosalina = nixpkgs.lib.nixosSystem {
+      rosalina = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [
