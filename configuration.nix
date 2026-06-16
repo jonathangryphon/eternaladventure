@@ -1,4 +1,4 @@
-{config, pkgs, lib,  ... }:
+{config, pkgs, lib,  sops-nix, ... }:
 
 
 let
@@ -7,10 +7,10 @@ let
   ############################
   zfsPoolReady = true; # flip to true AFTER creating ZFS pool
   enableSops = true; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
-  sopsNix = builtins.fetchTarball {
-    url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
-    sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
-  };
+  #sopsNix = builtins.fetchTarball {
+   # url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
+    #sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
+  #};
 in
 {
   imports = [
@@ -20,7 +20,7 @@ in
     ./modules/traefik.nix
     ./modules/services/minecraft-server.nix
     # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
-    "${sopsNix}/modules/sops"
+    "${sops-nix}/modules/sops"
     ./sops-secrets.nix
     ./modules/sops.nix
     ./modules/services/nextcloud.nix
