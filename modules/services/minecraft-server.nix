@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services.minecraft-server = {
@@ -8,7 +8,7 @@
     openFirewall = true;
 
     package = pkgs.papermcServers.papermc-1_21_10;
-    dataDir = "/tank/services/minecraft-server";
+    dataDir = "${config.myServer.dataRoot}/minecraft-server";
 
     jvmOpts = "-Xms8G -Xmx8G"; 
 

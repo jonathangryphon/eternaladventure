@@ -21,7 +21,7 @@
       mail_smtpauth = true;
       mail_smtpname = "eternaladventure.recovery@gmail.com";
     };
-    home = "/tank/services/nextcloud";
+    home = "${config.myServer.dataRoot}/nextcloud";
     
     secrets.mail_smtppassword = "/run/secrets/smtp/password";
     

@@ -33,7 +33,7 @@
 
 {
 
-  services.postgresql.dataDir = "/tank/services/postgresql"; # configures posgresql to use zfs array for metadata
+  services.postgresql.dataDir = "${config.myServer.dataRoot}/postgresql"; # configures posgresql to use zfs array for metadata
 
   # ---------------------------------------------------------------------------
   # 1. GARAGE — S3-compatible object storage
@@ -55,7 +55,7 @@
 
     settings = {
       metadata_dir = "/var/lib/garage/meta";
-      data_dir     = "/tank/services/garage/data";
+      data_dir     = "${config.myServer.dataRoot}/garage/data";
 
       replication_factor = 1;
 
@@ -75,7 +75,7 @@
   };
 
   systemd.services.garage.serviceConfig.StateDirectory = "garage";
-  systemd.services.garage.serviceConfig.ReadWritePaths = [ "/tank/services/garage/data" ];
+  systemd.services.garage.serviceConfig.ReadWritePaths = [ "${config.myServer.dataRoot}/garage/data" ];
 
   # ---------------------------------------------------------------------------
   # 2. ENTE API (museum) — binds to 127.0.0.1:8080 by default
