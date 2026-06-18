@@ -9,7 +9,7 @@
   services.oink.enable = false;
 
   # No ZFS pool on VPS
-  myServer.zfsPoolReady = false;
+  myServer.zfsPoolReady = true;
 
   # Open ports for remote access
   networking.firewall.allowedTCPPorts = [ 62022 80 443 ];
