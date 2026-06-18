@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     sops-nix.url = "github:Mic92/sops-nix/9836912e37aef546029e48c8749834735a6b9dad";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    disko-url = "github:nix-community/disko";
+    disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
