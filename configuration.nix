@@ -13,7 +13,7 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
+    # ./hardware-configuration.nix
     ./modules/server_arch.nix
     ./modules/podman.nix
     ./modules/ssh.nix
