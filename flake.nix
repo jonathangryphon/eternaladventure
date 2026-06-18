@@ -28,7 +28,6 @@
           disko.nixosModules.disko
           ./configuration.nix
           ./hosts/rosalina.nix
-          ./disks/rosalina-disk.nix
         ];
       };
 
