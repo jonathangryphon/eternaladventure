@@ -8,6 +8,11 @@
   myServer.dataRoot = "/var/lib/services";
   myServer.zfsPoolReady = true;
 
+  fileSystems."/" = {
+    device = "tank/local/root";
+    fsType = "zfs";
+  };
+
   services.oink.enable = false;
 
   networking.firewall.allowedTCPPorts = [ 62022 80 443 ];
