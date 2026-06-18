@@ -4,7 +4,7 @@
   imports = [ ../disks/rosalina-local-disk.nix ];
 
   networking.hostName = "Rosalina";
-  networking.hostId = "a89675af";
+  # networking.hostId = "a89675af";
   myServer.dataRoot = "/var/lib/services";
   myServer.zfsPoolReady = true;
 
