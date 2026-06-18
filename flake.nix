@@ -33,7 +33,7 @@
       };
 
       rosalina-local = nixpkgs.lib.nixosSystem {
-        system = "aarch64-darwin";  # for UTM on M1
+        system = "aarch64-linux";  # for UTM on M1
         specialArgs = { inherit sops-nix; };
         modules = [
           disko.nixosModules.disko
