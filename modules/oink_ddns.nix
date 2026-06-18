@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   services.oink = {
-    enable = true;
+    # enable = true;
     apiKeyFile = "/run/secrets/porkbun/apikey";
     secretApiKeyFile = "/run/secrets/porkbun/secretapikey";
     settings.interval = 900; # seconds between updates

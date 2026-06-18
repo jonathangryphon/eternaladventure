@@ -17,4 +17,3 @@
   # Traefik ACME — use a separate cert resolver or staging for VPS
   # to avoid hitting Let's Encrypt rate limits on your real domain
 }
-}
