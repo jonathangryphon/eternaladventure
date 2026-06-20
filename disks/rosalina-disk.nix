@@ -1,10 +1,10 @@
 # /etc/nixos/hosts/disks/rosalina-disk.nix
-{ ... }:
+{ device ? "/dev/sda", ... }:
 {
   disko.devices = {
     disk.main = {
       type = "disk";
-      device = "/dev/sda";  # verify with lsblk on VPS
+      device = device;  # verify with lsblk on VPS
       content = {
         type = "gpt";
         partitions = {
@@ -43,13 +43,14 @@
           type = "zfs_fs";
           options.mountpoint = "/nix";
         };
-        "local/persist" = {
-          type = "zfs_fs";
-          options.mountpoint = "/persist";
-        };
         "services" = {
           type = "zfs_fs";
-          options.mountpoint = "/var/lib/services";
+          options = {
+            mountpoint = "/var/lib/services";
+            encryption = "aes-256-gcm";
+            keyformat = "passphrase";
+            keylocation = "prompt";
+          };
         };
         "services/nextcloud" = { type = "zfs_fs"; };
         "services/postgresql" = { type = "zfs_fs"; };

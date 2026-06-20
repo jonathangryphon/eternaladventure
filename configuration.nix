@@ -45,16 +45,9 @@ in
   ############################
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   # ZFS Kernel Requirements
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
-  # ZFS Pools
-  boot.zfs.extraPools = [ "tank" ];
-  # Since we have a Non-ZFS root (ext4 boot drive) this prevents scanning for what does not exist
-  boot.zfs.forceImportRoot = false;
-  # ZFS requires a Host ID 
-  networking.hostId = "c2dfeb62";
 
   ############################
   # Networking & Firewall
