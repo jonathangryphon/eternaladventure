@@ -45,6 +45,22 @@
   ];
 
   ############################
+  # Stub users for sops secret ownership
+  # (real definitions live in ente.nix / garage's module, not imported here)
+  ############################
+  users.users.ente = {
+    isSystemUser = true;
+    group = "ente";
+  };
+  users.groups.ente = {};
+
+  users.users.garage = {
+    isSystemUser = true;
+    group = "garage";
+  };
+  users.groups.garage = {};
+
+  ############################
   # First NixOS version installed
   ############################
   system.stateVersion = "25.11";
