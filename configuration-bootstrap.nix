@@ -73,9 +73,6 @@
     ./modules/podman.nix
     ./modules/ssh.nix
     ./modules/traefik.nix
-    "${sops-nix}/modules/sops"
-    ./sops-secrets.nix
-    ./modules/sops.nix
     ./users.nix
     ./modules/zfs.nix
   ];
