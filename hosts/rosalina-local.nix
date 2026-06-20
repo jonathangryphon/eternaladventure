@@ -1,8 +1,7 @@
 # /etc/nixos/hosts/rosalina-local.nix
 { config, pkgs, lib, ... }:
 {
-  imports = [ ../disks/rosalina-local-disk.nix ];
-  imports = [ (import ../disks/rosalina-disk.nix { device = "/dev/vda"; }) ];
+  imports = [ (import ../disks/rosalina-local-disk.nix { device = "/dev/vda"; }) ];
   networking.hostName = "Rosalina";
   # networking.hostId = "a89675af";
   myServer.dataRoot = "/var/lib/services";
