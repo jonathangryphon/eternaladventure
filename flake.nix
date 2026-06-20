@@ -40,6 +40,15 @@
           ./hosts/rosalina-local.nix
         ];
       };
+      rosalina-bootstrap = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit sops-nix; };
+      modules = [
+        disko.nixosModules.disko
+        ./configuration-bootstrap.nix
+        ./hosts/rosalina.nix
+      ];
+    };
     };
   };
 }
