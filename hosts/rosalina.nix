@@ -28,16 +28,35 @@
     device = "tank/local/nix";
     fsType = "zfs";
   };
-  # Boot details so that ZFS encrypted datasets can be implemented and ensure security from VPS provider
-  boot.initrd.network.enable = true;
-  boot.initrd.network.ssh = {
-    enable = true;
-    port = 62021;
-    authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHawf4YO7tfG/BkWfw0E+aQRThKTIsGjXSwDBfQK/VGF charity@macbook" ];
-    hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+
+  # --- new networking block ---
+  networking.useNetworkd = true;
+  systemd.network.networks."10-wan" = {
+    matchConfig.Name = "eth0";
+    networkConfig.DHCP = "no";
+    address = [
+      "37.27.178.222/32"
+      "2a01:4f9:c010:b39f::1/64"
+    ];
+    routes = [
+      { routeConfig.Destination = "172.31.1.1"; }
+      { routeConfig.Gateway = "172.31.1.1"; routeConfig.GatewayOnLink = true; }
+      { routeConfig.Gateway = "fe80::1"; }
+    ];
+    linkConfig.RequiredForOnline = "routable";
   };
-  boot.initrd.availableKernelModules = [ "zfs" ];
-  boot.initrd.systemd.enable = true;  # required for initrd SSH on recent NixOS
+  # --- end new block ---
+
+  # Boot details so that ZFS encrypted datasets can be implemented and ensure security from VPS provider
+  #boot.initrd.network.enable = true;
+  #boot.initrd.network.ssh = {
+  #  enable = true;
+  #  port = 62021;
+  #  authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHawf4YO7tfG/BkWfw0E+aQRThKTIsGjXSwDBfQK/VGF charity@macbook" ];
+  #  hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+  #};
+  #boot.initrd.availableKernelModules = [ "zfs" ];
+  #boot.initrd.systemd.enable = true;  # required for initrd SSH on recent NixOS
 
   # Traefik ACME — use a separate cert resolver or staging for VPS
   # to avoid hitting Let's Encrypt rate limits on your real domain
