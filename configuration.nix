@@ -68,6 +68,7 @@ in
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false; # users do not have pws, only ssh keys for auth
 
+  nix.settings.trusted-users = [ "charity" ];
   ############################
   # Auto Update
   ############################
