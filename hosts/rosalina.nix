@@ -5,6 +5,11 @@
     (import ../disks/rosalina-disk.nix { device = "/dev/sda"; }) 
   ];
   networking.hostName = "Rosalina";
+
+  # ZFS imports
+  boot.zfs.forceImportRoot = true;
+  boot.zfs.extraPools = [ "tank" ];
+
   # ZFS requires a Host ID 
   networking.hostId = "a7b7c7d7";
   myServer.dataRoot = "/var/lib/services";
