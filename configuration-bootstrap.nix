@@ -5,7 +5,7 @@
   # Boot
   ############################
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false;
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
 
