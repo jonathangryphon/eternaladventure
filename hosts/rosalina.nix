@@ -7,7 +7,7 @@
   networking.hostName = "Rosalina";
 
   # Kernel module imports
-  boot.initrd.availableKernelModules = [ "ahci" "virtio_pci" "virtio_scsi" "virtio_blk" "sd_mod" "sr_mod" ];
+  # boot.initrd.availableKernelModules = [ "ahci" "virtio_pci" "virtio_scsi" "virtio_blk" "sd_mod" "sr_mod" ];
   boot.kernelParams = [ "zfs.zfs_arc_max=536870912" ]; # cap ARC at 512MB
   # ZFS imports
   boot.zfs.forceImportRoot = true;

@@ -28,6 +28,7 @@
           disko.nixosModules.disko
           ./configuration.nix
           ./hosts/rosalina.nix
+          ./hosts/hardware-rosalina.nix
         ];
       };
 
@@ -38,6 +39,7 @@
           disko.nixosModules.disko
           ./configuration.nix
           ./hosts/rosalina-local.nix
+          ./hosts/hardware-rosalina.nix
         ];
       };
       rosalina-bootstrap = nixpkgs.lib.nixosSystem {
@@ -47,6 +49,7 @@
         disko.nixosModules.disko
         ./configuration-bootstrap.nix
         ./hosts/rosalina.nix
+        ./hosts/hardware-rosalina.nix
       ];
     };
     };
