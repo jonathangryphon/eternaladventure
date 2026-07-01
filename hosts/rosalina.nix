@@ -27,15 +27,15 @@
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   # Filesystem definitions for NixOS mounting process
-  fileSystems."/" = {
-  device = "tank/local/root";
-  fsType = "zfs";
-  };
+  #fileSystems."/" = {
+  # device = "tank/local/root";
+  # fsType = "zfs";
+  #};
 
-  fileSystems."/nix" = {
-    device = "tank/local/nix";
-    fsType = "zfs";
-  };
+  #fileSystems."/nix" = {
+  #  device = "tank/local/nix";
+  #  fsType = "zfs";
+  #};
 
   # --- new networking block ---
   networking.useNetworkd = true;
