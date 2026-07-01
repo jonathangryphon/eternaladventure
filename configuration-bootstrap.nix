@@ -4,8 +4,11 @@
   ############################
   # Boot
   ############################
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "/dev/sda" ];
+  boot.loader.grub.efiSupport = false;
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
 
