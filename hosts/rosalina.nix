@@ -6,6 +6,9 @@
   ];
   networking.hostName = "Rosalina";
 
+  # Kernel module imports
+  boot.initrd.availableKernelModules = [ "ahci" "virtio_pci" "virtio_scsi" "virtio_blk" "sd_mod" "sr_mod" ];
+
   # ZFS imports
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" ];
