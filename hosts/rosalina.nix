@@ -9,6 +9,10 @@
   # Kernel module imports
   # boot.initrd.availableKernelModules = [ "ahci" "virtio_pci" "virtio_scsi" "virtio_blk" "sd_mod" "sr_mod" ];
   boot.kernelParams = [ "zfs.zfs_arc_max=536870912" ]; # cap ARC at 512MB
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+  boot.loader.grub.enable = lib.mkForce true;
+  boot.loader.grub.efiSupport = lib.mkForce false;
   # ZFS imports
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" ];
