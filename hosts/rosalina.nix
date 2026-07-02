@@ -13,6 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   boot.loader.grub.enable = lib.mkForce true;
   boot.loader.grub.efiSupport = lib.mkForce false;
+  systemd.network.wait-online.anyInterface = true; # prevents weird networkd error about being online
   # ZFS imports
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" ];
