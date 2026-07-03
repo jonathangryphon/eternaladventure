@@ -21,7 +21,6 @@
   boot.zfs.extraPools = [ "tank" ];
   networking.hostId = "a7b7c7d7";
   myServer.dataRoot = "/var/lib/services";
-  myServer.zfsPoolReady = true;
 
   # DDNS
   # TODO: remove module from hosts with static IPs entirely
