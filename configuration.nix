@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules/server_arch.nix
-    ./modules/podman.nix
     ./modules/ssh.nix
     ./modules/zfs.nix
     ./modules/traefik.nix
