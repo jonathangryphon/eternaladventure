@@ -1,31 +1,18 @@
 {config, pkgs, lib,  sops-nix, ... }:
 
-let
-  ############################
-  # BOOTSTRAP FLAGS
-  ############################
-  zfsPoolReady = true; # flip to true AFTER creating ZFS pool
-  enableSops = true; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
-  #sopsNix = builtins.fetchTarball {
-   # url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
-    #sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
-  #};
-in
 {
   imports = [
-    # ./hardware-configuration.nix
     ./modules/server_arch.nix
     ./modules/podman.nix
     ./modules/ssh.nix
     ./modules/traefik.nix
-    ./modules/services/minecraft-server.nix
-    # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
     "${sops-nix}/modules/sops"
     ./sops-secrets.nix
     ./modules/sops.nix
     ./modules/services/nextcloud.nix
     ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
+    ./modules/services/minecraft-server.nix
     ./users.nix
   ]  
     # ZFS-dependent config 
@@ -45,20 +32,18 @@ in
   ############################
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # ZFS Kernel Requirements
+  # ZFS
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
 
   ############################
-  # Networking & Firewall
+  # Networking & Firewall    # see modules/wifi.nix for more
   ############################
-  # see modules/wifi.nix for Networking Configuration
-  networking.firewall.allowedTCPPorts = [ 80 443 ]; # ssh port is defined in /modules/ssh.nix
+  networking.firewall.allowedTCPPorts = [ 80 443 ]; # other ports defined in their own modules
 
   ############################
   # Host & Timezone
   ############################
-  # networking.hostName = "Afabel"; added in hosts file for flake
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 	
@@ -67,8 +52,8 @@ in
   ############################
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false; # users do not have pws, only ssh keys for auth
-
   nix.settings.trusted-users = [ "charity" ];
+
   ############################
   # Auto Update
   ############################
@@ -87,6 +72,7 @@ in
   # Flake support
   ############################
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   ############################
   # System Packages
   ############################
@@ -95,22 +81,18 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    neofetch
-    sops
-    age
-    htop
-    sanoid
-    pv
-    mbuffer
-    lzop
-    zstd
-    ffmpeg 
-    exiftool
-    btop
- ];
+    # Core CLI
+    vim git wget btop neofetch
+
+    # Secrets
+    sops age
+
+    # ZFS backup (sanoid/syncoid pipeline)
+    sanoid pv mbuffer lzop zstd
+
+    # Media/file tools (Nextcloud/Ente related?)
+    ffmpeg exiftool
+  ];
 
   ############################
   # First NixOS version installed
