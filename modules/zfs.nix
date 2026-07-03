@@ -4,10 +4,9 @@
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
-    # autoSnapshot.enable = true; # replaced by sanoid below
   };
 
-  services.syncoid = { # creates the syncoid user which the pi can use to remote in for backup pulls
+  services.syncoid = { # pi uses syncoid user to pull backups
     enable = true;
     commonArgs = [ "--debug" ];
   };
