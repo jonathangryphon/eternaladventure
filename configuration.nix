@@ -5,27 +5,19 @@
     ./modules/server_arch.nix
     ./modules/podman.nix
     ./modules/ssh.nix
+    ./modules/zfs.nix
     ./modules/traefik.nix
     "${sops-nix}/modules/sops"
     ./sops-secrets.nix
     ./modules/sops.nix
+    ./modules/oink_ddns.nix
+    ./modules/wifi.nix
     ./modules/services/nextcloud.nix
     ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./modules/services/minecraft-server.nix
     ./users.nix
-  ]  
-    # ZFS-dependent config 
-    ++ lib.optionals zfsPoolReady [
-      ./modules/zfs.nix
-    ]
-    # Secrets + secret-dependent services configs
-    ++ lib.optionals enableSops [
-   # ./modules/sops.nix
-   # ./sops-secrets.nix
-    ./modules/oink_ddns.nix
-    ./modules/wifi.nix
-    ];
+  ];
 
   ############################
   # Boot
