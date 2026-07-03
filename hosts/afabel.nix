@@ -10,4 +10,7 @@
   boot.zfs.extraPools = [ "tank" ];
   boot.zfs.forceImportRoot = false; # root drive is not zfs, only ext4
   networking.hostId = "c2dfeb62"; # unique host ID required by zfs
+
+  # DDNS
+  services.oink.enable = true;
 }
