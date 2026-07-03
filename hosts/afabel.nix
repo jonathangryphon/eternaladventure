@@ -2,7 +2,7 @@
 {
   imports = [ ../hardware-configuration.nix ];
 
-  networking.hostName = "Afabel";
+  networking.hostName = "Afabel"; # cuz driven by eternity
 
   # OPTIONS
   myServer.dataRoot = "/tank/services"; # modules/server_arch.nix option for centralizing service data directory definitions
