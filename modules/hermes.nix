@@ -69,6 +69,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
         User = "signal-cli";
+        Environment = "XDG_DATA_HOME=${config.myServer.dataRoot}/signal-cli";
         ExecStart = "${pkgs.signal-cli}/bin/signal-cli -a +17203723131 daemon --http 127.0.0.1:8087";
         Restart = "always";
     };
