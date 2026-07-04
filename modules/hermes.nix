@@ -3,6 +3,9 @@
   services.ollama = {
     enable = true;
     acceleration = false;
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "32000";
+    };
   };
 
   services.hermes-agent = {
@@ -11,8 +14,9 @@
     settings = {
       model = {
         default = "qwen2.5:14b-instruct-q4_K_M";
-        provider = "openai-compatible";
+        provider = "custom";
         base_url = "http://localhost:11434/v1";
+        context_length = 32000;
       };
       terminal = {
         backend = "local";
