@@ -70,5 +70,6 @@
   };
   sops.secrets."b2backblaze" = {
     sopsFile = ./secrets/b2backblaze.env;
+    format = "dotenv";
   };
 }
