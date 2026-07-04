@@ -50,7 +50,7 @@
     CapabilityBoundingSet = "";
   };
 
-  gatewayPlatforms.signal = {
+  services.hermes-agent.settings.gateway.platforms.signal = {
     phone = "+17203723131";
     daemon_url = "http://127.0.0.1:8087";
   };
