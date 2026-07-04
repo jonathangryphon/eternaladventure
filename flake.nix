@@ -7,17 +7,21 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko"; 
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
-  outputs = { self, nixpkgs, sops-nix, disko }: {
+  outputs = { self, nixpkgs, sops-nix, disko, hermes-agent }: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [ 
+            hermes-agent.nixosModules.default
             ./configuration.nix 
             ./hosts/afabel.nix
+            ./modules/hermes.nix
         ];
       };
 

@@ -73,4 +73,8 @@
     sopsFile = ./secrets/b2backblaze.env;
     format = "dotenv";
   };
+  sops.secrets."signal/allowed_users" = {
+    sopsFile = ./secrets/signal.env;
+    format = "dotenv";
+  };
 }
