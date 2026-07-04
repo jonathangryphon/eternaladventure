@@ -13,7 +13,7 @@
     stateDir = "${config.myServer.dataRoot}/hermes";
     settings = {
       model = {
-        default = "qwen3:14b";
+        default = "qwen3:8b";
         provider = "custom";
         base_url = "http://localhost:11434/v1";
         context_length = 65536;
