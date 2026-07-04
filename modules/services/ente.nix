@@ -1,9 +1,6 @@
 # ente.nix — Self-hosted Ente Photos on NixOS
 # Stack: Garage (S3) + Ente API (museum) + Ente web frontend + Traefik
-#
-# Import from your configuration.nix:
-#   imports = [ ./ente.nix ];
-#
+
 # Before first rebuild:
 #   1. Generate secrets and write them to files:
 #        sudo mkdir -p /etc/ente
@@ -114,11 +111,9 @@
 
       internal = {
         # Lets you log in with OTP 123456 — no SMTP needed for first setup.
-        # Change this to your actual email address.
-        # hardcoded-ott.emails = [ "nolongerneededafterinitialsetup@mail.com,123456" ];
+        # hardcoded-ott.emails = [ "example@mail.com,123456" ];
 
-        # Flip to true after you've created your account.
-        disable-registration = false;
+        disable-registration = false; # open to others or not
       };
     
       smtp = {

@@ -53,7 +53,6 @@
     };
   };
 
-
   services.traefik.dynamicConfigOptions.http.services.nextcloud-service = {
     loadBalancer.servers = [
       { url = "http://127.0.0.1:8090"; }
