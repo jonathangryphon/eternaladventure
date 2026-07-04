@@ -65,4 +65,10 @@
     sopsFile = ./secrets/ente_smtp.yaml;
     owner = "ente";
   };
+  sops.secrets."rustic_repo_pw" = {
+    sopsFile = ./secrets/rustic_repo_pw;
+  };
+  sops.secrets."b2backblaze" = {
+    sopsFile = ./secrets/b2backblaze.env;
+  };
 }
