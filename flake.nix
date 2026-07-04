@@ -8,8 +8,6 @@
     disko.url = "github:nix-community/disko"; 
     disko.inputs.nixpkgs.follows = "nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
-    hermes-agent.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = { self, nixpkgs, sops-nix, disko, unstable, hermes-agent, ... }: {
@@ -19,17 +17,8 @@
         system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [ 
-              ({ pkgs, ... }: {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    unstable = import unstable { system = prev.system; config.allowUnfree = prev.config.allowUnfree or false; };
-                  })
-                ];
-              })
-            hermes-agent.nixosModules.default
             ./configuration.nix 
             ./hosts/afabel.nix
-            ./modules/hermes.nix
         ];
       };
 
