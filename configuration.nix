@@ -85,7 +85,7 @@
     ffmpeg exiftool
 
     # Misc
-    signal-cli
+    unstable.signal-cli
   ];
 
   ############################
