@@ -4,7 +4,7 @@
     enable = true;
     acceleration = false;
     environmentVariables = {
-      OLLAMA_CONTEXT_LENGTH = "64000";
+      OLLAMA_CONTEXT_LENGTH = "65536";
     };
   };
 
@@ -16,7 +16,8 @@
         default = "qwen2.5:14b-instruct-q4_K_M";
         provider = "custom";
         base_url = "http://localhost:11434/v1";
-        context_length = 64000;
+        context_length = 65536;
+        ollama_num_ctx = 65536;
       };
       terminal = {
         backend = "local";
