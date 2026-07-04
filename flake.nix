@@ -9,6 +9,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hermes-agent.url = "github:NousResearch/hermes-agent";
+    hermes-agent.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = { self, nixpkgs, sops-nix, disko, hermes-agent, ... }: {
