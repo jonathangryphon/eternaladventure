@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   services.ollama = {
     enable = true;
@@ -43,7 +43,7 @@
   systemd.services.hermes-agent.serviceConfig = {
     DynamicUser = true;
     ProtectSystem = "strict";
-    ProtectHome = true;
+    ProtectHome = lib.mkForce true;
     PrivateTmp = true;
     NoNewPrivileges = true;
     ReadWritePaths = [ 
