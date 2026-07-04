@@ -11,7 +11,7 @@
     hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
-  outputs = { self, nixpkgs, sops-nix, disko, hermes-agent }: {
+  outputs = { self, nixpkgs, sops-nix, disko, hermes-agent, ... }: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
