@@ -10,7 +10,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, sops-nix, disko, unstable, hermes-agent, ... }: {
+  outputs = { self, nixpkgs, sops-nix, disko, unstable, ... }: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
