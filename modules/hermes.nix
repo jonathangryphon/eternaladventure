@@ -8,7 +8,7 @@
   services.hermes-agent = {
     enable = true;
     stateDir = "${config.myServer.dataRoot}/hermes";
-    config = {
+    settings = {
       model = {
         default = "qwen2.5:14b-instruct-q4_K_M";
         provider = "openai-compatible";
@@ -29,10 +29,14 @@
       };
       toolsets = [ "filesystem" "memory" ];
     };
+    environment = {
+      SIGNAL_ACCOUNT = "+17203723131";
+      SIGNAL_HTTP_URL = "http://127.0.0.1:8087";
+    };
     environmentFiles = [ config.sops.secrets."signal/allowed_users".path ];
     mcpServers.filesystem = {
       command = "npx";
-    args = [ "-y" "@modelcontextprotocol/server-filesystem" "${config.myServer.dataRoot}/hermes-notes" ];
+      args = [ "-y" "@modelcontextprotocol/server-filesystem" "${config.myServer.dataRoot}/hermes-notes" ];
     };
   };
 
@@ -48,11 +52,6 @@
      ];
     RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
     CapabilityBoundingSet = "";
-  };
-
-  services.hermes-agent.settings.gateway.platforms.signal = {
-    phone = "+17203723131";
-    daemon_url = "http://127.0.0.1:8087";
   };
 
   users.users.signal-cli = {
