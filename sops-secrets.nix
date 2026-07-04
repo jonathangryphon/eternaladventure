@@ -67,6 +67,7 @@
   };
   sops.secrets."restic_repo_pw" = {
     sopsFile = ./secrets/restic_repo_pw;
+    format = "binary";
   };
   sops.secrets."b2backblaze" = {
     sopsFile = ./secrets/b2backblaze.env;
