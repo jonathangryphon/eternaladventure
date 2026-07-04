@@ -1,10 +1,5 @@
 { config, ... }:
 {
-  sops.secrets."signal/allowed_users" = {
-    sopsFile = ./secrets/signal.env;
-    format = "dotenv";
-  };
-
   services.ollama = {
     enable = true;
     acceleration = false;
@@ -53,5 +48,30 @@
      ];
     RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
     CapabilityBoundingSet = "";
+  };
+
+  gatewayPlatforms.signal = {
+    phone = "+17203723131";
+    daemon_url = "http://127.0.0.1:8087";
+  };
+
+  users.users.signal-cli = {
+    isSystemUser = true;
+    group = "signal-cli";
+    home = "${config.myServer.dataRoot}/signal-cli";
+    createHome = true;
+  };
+
+  users.groups.signal-cli = {};
+
+  systemd.services.signal-cli-daemon = {
+    description = "signal-cli HTTP daemon";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+        User = "signal-cli";
+        ExecStart = "${pkgs.signal-cli}/bin/signal-cli -a +17203723131 daemon --http 127.0.0.1:8087";
+        Restart = "always";
+    };
   };
 }

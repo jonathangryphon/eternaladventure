@@ -83,6 +83,9 @@
 
     # Media/file tools (Nextcloud/Ente related?)
     ffmpeg exiftool
+
+    # Misc
+    signal-cli
   ];
 
   ############################
