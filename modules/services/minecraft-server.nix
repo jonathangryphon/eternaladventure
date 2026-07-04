@@ -10,7 +10,7 @@
     package = pkgs.papermcServers.papermc-1_21_10;
     dataDir = "${config.myServer.dataRoot}/minecraft-server";
 
-    jvmOpts = "-Xms8G -Xmx8G"; 
+    jvmOpts = "-Xms4G -Xmx4G"; 
 
     serverProperties = {
         difficulty = "hard";
