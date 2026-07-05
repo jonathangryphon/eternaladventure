@@ -34,15 +34,27 @@
       };
 
       rosalina-bootstrap = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit sops-nix; };
-      modules = [
-        disko.nixosModules.disko
-        ./configuration-bootstrap.nix
-        ./hosts/rosalina.nix
-        ./hosts/hardware-rosalina.nix
-      ];
-    };
+        system = "x86_64-linux";
+        specialArgs = { inherit sops-nix; };
+        modules = [
+          disko.nixosModules.disko
+          ./configuration-bootstrap.nix
+          ./hosts/rosalina.nix
+          ./hosts/hardware-rosalina.nix
+        ];
+      };
+
+      output = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux;";
+        specialArgs = { inherit sops-nix; };
+        modules = [
+          disk.nixosModules.disko
+          ./configuration-bootstrap.nix
+          ./hosts/outpost.nix
+          ./hosts/hardware-outpost.nix
+        ];
+      };
+
     };
   };
 }
