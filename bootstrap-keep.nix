@@ -5,8 +5,6 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = false;
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
