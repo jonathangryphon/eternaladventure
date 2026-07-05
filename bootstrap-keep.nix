@@ -19,10 +19,24 @@
     vim git wget htop sops age
   ];
 
+  # USERS
+  users.mutableUsers = false; # users managed fully by nixos
+
+  users.users.charity = {
+    isNormalUser = true;
+    description = "primary Admin user";
+    extraGroups = [ "wheel" ]; # sudo access
+  };
+
+  users.users.breakglass = {
+    isNormalUser = true;
+    description = "break glass account for emergency remediation";
+    extraGroups = [ "wheel" ]; # sudo access
+  };
+
   imports = [
     ./modules/ssh.nix
     ./modules/traefik.nix
-    ./users.nix
   ];
 
   system.stateVersion = "24.05";

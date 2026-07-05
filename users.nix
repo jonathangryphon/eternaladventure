@@ -21,6 +21,4 @@
     description = "user for zfs backups";
     shell = pkgs.bash;
   };
-
-  users.users.traefik.extraGroups = [ "podman" ];
 }
