@@ -18,10 +18,14 @@
   services.oink.enable = true;
 
   # "KEEP" PROXY
-  networking.wireguard.interfaces.wg0.peers = [{
-    publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
-    endpoint = (import ../secrets/wg-peers.nix).endpoint;
-    allowedIPs = [ "10.100.0.1/32" ];
-    persistentKeepalive = 25;
-  }];
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.100.0.2/24" ];
+    privateKeyFile = "/run/secrets/wg-afabel-key";
+    peers = [{
+      publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE=";
+      endpoint = (import ../secrets/wg-peers.nix).endpoint;
+      allowedIPs = [ "10.100.0.1/32" ];
+      persistentKeepalive = 25;
+    }];
+  };
 }
