@@ -56,6 +56,8 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGPtcNoxFq+KnnCvt5xmBAOfzLXWul3i0MmOA8W/FXl breakglass@macbook"
   ];  
 
+  sops.age.keyFile = "/etc/nixos/secrets/age-keys.txt";
+
   imports = [
     ./modules/traefik.nix
   ];
