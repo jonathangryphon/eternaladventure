@@ -23,7 +23,7 @@
     privateKeyFile = "/run/secrets/wg-afabel-key";
     peers = [{
       publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE=";
-      endpoint = (import ../secrets/wg-peers.nix).endpoint;
+      endpoint = (import /etc/nixos-local/wg-peers.nix).endpoint;
       allowedIPs = [ "10.100.0.1/32" ];
       persistentKeepalive = 25;
     }];
