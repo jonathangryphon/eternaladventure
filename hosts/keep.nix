@@ -1,7 +1,20 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    # disko takes care of this: ./hardware-rosalina.nix
+    (import ../disks/keep-disk.nix { device = "/dev/vda"; }) 
+  ];
 
+  # BOOT
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+  boot.loader.grub.enable = lib.mkForce true;
+  boot.loader.grub.efiSupport = lib.mkForce false;
+  boot.loader.grub.device = "/dev/vda";
+
+  systemd.network.wait-online.anyInterface = true;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+  
   networking.hostName = "keep";
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [ 51820 ];
