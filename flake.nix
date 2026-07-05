@@ -48,7 +48,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [
-          ./boostrap-keep.nix
+          ./bootstrap-keep.nix
           ./hosts/keep.nix
           ./hosts/hardware-keep.nix
         ];
