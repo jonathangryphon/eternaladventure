@@ -25,7 +25,7 @@
     listenPort = 51820;
     privateKeyFile = "/run/secrets/wg-keep-key";
     peers = [{
-      publicKey = "AFABEL_WG_PUBKEY"; # fill
+      publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY="; # fill
       allowedIPs = [ "10.100.0.2/32" ];
     }];
   };
