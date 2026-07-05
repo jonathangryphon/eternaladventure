@@ -19,8 +19,8 @@
 
   # "KEEP" PROXY
   networking.wireguard.interfaces.wg0.peers = [{
-    publicKey = "KEEP_WG_PUBKEY"; # fill
-    endpoint = "KEEP_PUBLIC_IP:51820";
+    publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
+    endpoint = (import ../secrets/wg-peers.nix).endpoint;
     allowedIPs = [ "10.100.0.1/32" ];
     persistentKeepalive = 25;
   }];

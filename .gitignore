@@ -3,3 +3,4 @@ age-keys.txt
 .DS_Store
 result
 .DS_Store
+secrets/wg-peers.nix
