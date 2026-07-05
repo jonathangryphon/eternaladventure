@@ -50,7 +50,7 @@
         modules = [
           ./bootstrap-keep.nix
           ./hosts/keep.nix
-          ./hosts/hardware-keep.nix
+          ./hardware-keep.nix
         ];
       };
 
