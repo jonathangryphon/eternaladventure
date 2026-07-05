@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
-    (import ../disks/keep-disk.nix { device = "/dev/vda"; }) 
+    # ../disks/keep-disk.nix
   ];
 
   # BOOT
@@ -68,6 +68,4 @@
     sopsFile = ../secrets/keep.yaml;
     format = "yaml";
   };
-
-  system.stateVersion = "24.05"; # match channel
 }

@@ -45,13 +45,12 @@
       };
 
       keep = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux;";
+        system = "x86_64-linux";
         specialArgs = { inherit sops-nix; };
         modules = [
-          disk.nixosModules.disko
-          ./configuration-bootstrap.nix
+          ./boostrap-keep.nix
           ./hosts/keep.nix
-          ./hosts/hardware-outpost.nix
+          ./hosts/hardware-keep.nix
         ];
       };
 
