@@ -28,4 +28,8 @@
       persistentKeepalive = 25;
     }];
   };
+  sops.secrets.wg-afabel-key = {
+    sopsFile = ../secrets/afabel.yaml;
+    format = "yaml";
+  };
 }
