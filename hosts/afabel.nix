@@ -22,7 +22,7 @@
     ips = [ "10.100.0.2/24" ];
     privateKeyFile = "/run/secrets/wg-afabel-key";
     peers = [{
-      publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE=";
+      publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";
       endpoint = (import /etc/nixos-local/wg-peers.nix).endpoint;
       allowedIPs = [ "10.100.0.1/32" ];
       persistentKeepalive = 25;
