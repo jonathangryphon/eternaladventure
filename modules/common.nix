@@ -8,7 +8,7 @@
         "${sops-nix}/modules/sops"
         ./sops.nix
         ../sops-secrets.nix
-        ./modules/oink_ddns.nix
+        ./oink_ddns.nix
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports
