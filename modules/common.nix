@@ -31,5 +31,5 @@
 
         # Secrets
         sops age
-    ]
+    ];
 }
