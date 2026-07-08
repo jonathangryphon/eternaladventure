@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   boot.loader.grub.enable = lib.mkForce true;
   boot.loader.grub.efiSupport = lib.mkForce false;
-  boot.loader.grub.device = "/dev/vda";
+  # boot.loader.grub.device = "/dev/vda";
   
   time.timeZone = "America/Los_Angeles";
 
