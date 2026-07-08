@@ -15,8 +15,8 @@
     ./modules/services/ente.nix
     ./modules/services/traefik-dashboard.nix
     ./modules/services/minecraft-server.nix
-    ./users.nix
-    ./syncoid.nix
+    ./modules/users/core.nix
+    ./modules/users/syncoid.nix
   ];
 
   ############################

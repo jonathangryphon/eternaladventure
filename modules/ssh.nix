@@ -10,7 +10,7 @@
         PubkeyAuthentication = true; # this is the default, but declaring it expresses code intent
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
-        AllowUsers = [ "charity" "breakglass" "syncoid" ];
+        AllowUsers = [ "charity" "breakglass" ];
       };
     };
   

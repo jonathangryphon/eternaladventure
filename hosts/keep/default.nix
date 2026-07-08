@@ -17,9 +17,8 @@
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
   
   networking.hostName = "keep";
-  networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [ 51820 ];
-  networking.firewall.allowedTCPPorts = [ 80 443 33333 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ]; # wireguard
+  networking.firewall.allowedTCPPorts = [ 33333 ]; # minecraft custom port
 
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.100.0.1/24" ];

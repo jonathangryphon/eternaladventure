@@ -74,7 +74,7 @@
     ./modules/server_arch.nix
     ./modules/ssh.nix
     ./modules/traefik.nix
-    ./users.nix
+    ./modules/users/core.nix
     ./modules/zfs.nix
   ];
 }

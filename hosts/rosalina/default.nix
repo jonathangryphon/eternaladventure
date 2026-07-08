@@ -2,7 +2,7 @@
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
-    (import ../disks/rosalina-disk.nix { device = "/dev/sda"; }) 
+    (import disko.nix { device = "/dev/sda"; }) 
   ];
 
   networking.hostName = "Rosalina"; # cuz the vps lives in a galaxy
