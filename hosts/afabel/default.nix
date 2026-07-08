@@ -1,7 +1,7 @@
 { config, pkgs, lib, sops-nix, ... }:
 {
   imports = [ 
-    hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../modules/restic.nix
     ../../modules/zfs.nix
     ../../modules/traefik.nix
