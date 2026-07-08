@@ -1,11 +1,20 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, sops-nix, ... }:
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
     (import disko.nix { device = "/dev/sda"; }) 
+    ./modules/restic.nix
+    ./modules/zfs.nix
+    ./modules/traefik.nix
+    ./modules/services/nextcloud.nix
+    ./modules/services/ente.nix
+    ./modules/services/traefik-dashboard.nix
+    ./modules/services/minecraft-server.nix
+    ./modules/users/syncoid.nix
   ];
 
   networking.hostName = "Rosalina"; # cuz the vps lives in a galaxy
+  time.timeZone = "America/Chicago"; # FIXME according to vps location
 
   # BOOT
   boot.kernelParams = [ "zfs.zfs_arc_max=536870912" ]; # cap ARC at 512MB
@@ -15,6 +24,8 @@
   boot.loader.grub.efiSupport = lib.mkForce false;
   systemd.network.wait-online.anyInterface = true; # prevents weird networkd error about being online, well, it should have.... but networkd is weird with pre-configured networks so we also add the below line (which makes this unnecessary bloat)
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false; # disables that networkd check service entirely to prevent weird buggy issue
+  boot.kernelModules = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" ];
 
   # ZFS 
   boot.zfs.forceImportRoot = true;
@@ -56,4 +67,7 @@
     ];
     linkConfig.RequiredForOnline = "routable";
   };
+
+  system.stateVersion = "25.11";
+
 }

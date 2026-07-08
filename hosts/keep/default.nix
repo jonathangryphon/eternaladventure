@@ -2,8 +2,10 @@
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
-    # ../disks/keep-disk.nix
-    ../modules/traefik_passthrough.nix
+    ./modules/traefik_passthrough.nix
+    ./modules/traefik.nix
+    ./modules/users/core.nix
+    ./modules/ssh.nix
   ];
 
   # BOOT
@@ -12,6 +14,8 @@
   boot.loader.grub.enable = lib.mkForce true;
   boot.loader.grub.efiSupport = lib.mkForce false;
   boot.loader.grub.device = "/dev/vda";
+  
+  time.timeZone = "America/Los_Angeles";
 
   systemd.network.wait-online.anyInterface = true;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
@@ -34,4 +38,9 @@
     sopsFile = ../secrets/keep.yaml;
     format = "yaml";
   };
+
+  sops.age.keyFile = "/etc/nixos/secrets/age-keys.txt";
+  
+  system.stateVersion = "24.05";
+
 }

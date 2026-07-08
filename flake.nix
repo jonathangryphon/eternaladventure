@@ -18,7 +18,7 @@
         specialArgs = { inherit sops-nix; };
         modules = [ 
             ./configuration.nix 
-            ./hosts/afabel
+            ./hosts/afabel/default.nix
         ];
       };
 
@@ -30,6 +30,7 @@
           ./configuration.nix
           ./hosts/rosalina
           ./hosts/rosalina/disko.nix
+          ../modules/common.nix
         ];
       };
 
@@ -41,6 +42,7 @@
           ./configuration-bootstrap.nix
           ./hosts/rosalina
           ./hosts/rosalina/disko.nix
+          ../modules/common.nix
         ];
       };
 
@@ -49,9 +51,9 @@
         specialArgs = { inherit sops-nix; };
         modules = [
           sops-nix.nixosModules.sops
-          ./bootstrap-keep.nix
-          ./hosts/keep
+          ./hosts/keep/default.nix
           ./hosts/keep/disko.nix
+          ../modules/common.nix
         ];
       };
 

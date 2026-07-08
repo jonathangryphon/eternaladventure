@@ -1,8 +1,16 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, sops-nix, ... }:
 {
   imports = [ 
-    ../hardware-configuration.nix
-    ../modules/restic.nix
+    hardware-configuration.nix
+    ./modules/restic.nix
+    ./modules/zfs.nix
+    ./modules/traefik.nix
+    ./modules/wifi.nix
+    ./modules/services/nextcloud.nix
+    ./modules/services/ente.nix
+    ./modules/services/traefik-dashboard.nix
+    ./modules/services/minecraft-server.nix
+    ./modules/users/syncoid.nix
   ];
 
   networking.hostName = "Afabel"; # cuz driven by eternity
@@ -13,6 +21,30 @@
   boot.zfs.extraPools = [ "tank" ];
   boot.zfs.forceImportRoot = false; # root drive is not zfs, only ext4
   networking.hostId = "c2dfeb62"; # unique host ID required by zfs
+  ############################
+  # Boot
+  ############################
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # ZFS
+  boot.kernelModules = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" ];
+
+  time.timeZone = "America/Chicago";
+
+  ############################
+  # Auto Update
+  ############################
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";         # or "weekly"
+    persistent = true;       # keeps schedule after reboots
+    allowReboot = true;      # reboot automatically if needed (optional)
+    rebootWindow = {         # optional safe reboot window
+      lower = "02:00";
+      upper = "03:00";
+    };
+  };
 
   # DDNS
   services.oink.enable = true;
@@ -32,4 +64,17 @@
     sopsFile = ../secrets/afabel.yaml;
     format = "yaml";
   };
+
+  environment.systemPackages = with pkgs; [
+    # ZFS backup (sanoid/syncoid pipeline)
+    sanoid pv mbuffer lzop zstd
+
+    # Media/file tools (Nextcloud/Ente related?)
+    ffmpeg exiftool
+  ];
+
+  ############################
+  # First NixOS version installed
+  ############################
+  system.stateVersion = "25.11";
 }
