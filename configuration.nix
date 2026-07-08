@@ -16,6 +16,7 @@
     ./modules/services/traefik-dashboard.nix
     ./modules/services/minecraft-server.nix
     ./users.nix
+    ./syncoid.nix
   ];
 
   ############################

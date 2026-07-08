@@ -9,16 +9,17 @@
     isNormalUser = true;
     description = "primary Admin user";
     extraGroups = [ "wheel" ]; # sudo access
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHawf4YO7tfG/BkWfw0E+aQRThKTIsGjXSwDBfQK/VGF charity@macbook"
+    ];
   };
 
   users.users.breakglass = {
     isNormalUser = true;
     description = "break glass account for emergency remediation";
     extraGroups = [ "wheel" ]; # sudo access
-  };
-  
-  users.users.syncoid = {
-    description = "user for zfs backups";
-    shell = pkgs.bash;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGPtcNoxFq+KnnCvt5xmBAOfzLXWul3i0MmOA8W/FXl breakglass@macbook"
+    ];    
   };
 }

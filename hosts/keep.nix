@@ -3,6 +3,7 @@
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
     # ../disks/keep-disk.nix
+    ../modules/traefik_passthrough.nix
   ];
 
   # BOOT
@@ -28,40 +29,6 @@
       publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
       allowedIPs = [ "10.100.0.2/32" ];
     }];
-  };
-
-  services.traefik = {
-    enable = true;
-    staticConfigOptions = {
-      entryPoints.web.address = ":80";
-      entryPoints.websecure.address = ":443";
-      entryPoints.mc.address = ":33333";
-    };
-    dynamicConfigOptions.tcp = {
-      routers = {
-        https-passthrough = {
-          entryPoints = [ "websecure" ];
-          rule = "HostSNI(`*`)";
-          service = "home-https";
-          tls.passthrough = true;
-        };
-        http-passthrough = {
-          entryPoints = [ "web" ];
-          rule = "HostSNI(`*`)";
-          service = "home-http";
-        };
-        mc-passthrough = {
-          entryPoints = [ "mc" ];
-          rule = "HostSNI(`*`)";
-          service = "mc-home";
-        };
-      };
-      services = {
-        home-https.loadBalancer.servers = [{ address = "10.100.0.2:443"; }];
-        home-http.loadBalancer.servers  = [{ address = "10.100.0.2:80"; }];
-        mc-home.loadBalancer.servers    = [{ address = "10.100.0.2:33333"; }];
-      };
-    };
   };
 
   sops.secrets.wg-keep-key = {
