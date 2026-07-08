@@ -2,11 +2,11 @@
 
 {
     imports = [
-        ./modules/users/core.nix
-        ./modules/ssh.nix
-        ./modules/server_arch.nix
+        ./users/core.nix
+        ./ssh.nix
+        ./server_arch.nix
         "${sops-nix}/modules/sops"
-        ./modules/sops.nix
+        ./sops.nix
         ./sops-secrets.nix
         ./modules/oink_ddns.nix
     ];
