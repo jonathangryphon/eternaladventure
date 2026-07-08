@@ -3,14 +3,14 @@
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
     (import disko.nix { device = "/dev/sda"; }) 
-    ./modules/restic.nix
-    ./modules/zfs.nix
-    ./modules/traefik.nix
-    ./modules/services/nextcloud.nix
-    ./modules/services/ente.nix
-    ./modules/services/traefik-dashboard.nix
-    ./modules/services/minecraft-server.nix
-    ./modules/users/syncoid.nix
+    ../../modules/restic.nix
+    ../../modules/zfs.nix
+    ../../modules/traefik.nix
+    ../../modules/services/nextcloud.nix
+    ../../modules/services/ente.nix
+    ../../modules/services/traefik-dashboard.nix
+    ../../modules/services/minecraft-server.nix
+    ../../modules/users/syncoid.nix
   ];
 
   networking.hostName = "Rosalina"; # cuz the vps lives in a galaxy

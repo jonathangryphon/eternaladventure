@@ -2,10 +2,10 @@
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
-    ./modules/traefik_passthrough.nix
-    ./modules/traefik.nix
-    ./modules/users/core.nix
-    ./modules/ssh.nix
+    ../../modules/traefik_passthrough.nix
+    ../../modules/traefik.nix
+    ../../modules/users/core.nix
+    ../../modules/ssh.nix
   ];
 
   # BOOT

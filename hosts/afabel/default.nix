@@ -2,15 +2,15 @@
 {
   imports = [ 
     hardware-configuration.nix
-    ./modules/restic.nix
-    ./modules/zfs.nix
-    ./modules/traefik.nix
-    ./modules/wifi.nix
-    ./modules/services/nextcloud.nix
-    ./modules/services/ente.nix
-    ./modules/services/traefik-dashboard.nix
-    ./modules/services/minecraft-server.nix
-    ./modules/users/syncoid.nix
+    ../../modules/restic.nix
+    ../../modules/zfs.nix
+    ../../modules/traefik.nix
+    ../../modules/wifi.nix
+    ../../modules/services/nextcloud.nix
+    ../../modules/services/ente.nix
+    ../../modules/services/traefik-dashboard.nix
+    ../../modules/services/minecraft-server.nix
+    ../../modules/users/syncoid.nix
   ];
 
   networking.hostName = "Afabel"; # cuz driven by eternity
