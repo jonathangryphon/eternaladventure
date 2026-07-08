@@ -49,6 +49,7 @@
         specialArgs = { inherit sops-nix; };
         modules = [
           sops-nix.nixosModules.sops
+          disko.nixosModules.disko
           ./hosts/keep/default.nix
           ./hosts/keep/disko.nix
           ./modules/common.nix
