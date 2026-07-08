@@ -52,6 +52,7 @@
           disko.nixosModules.disko
           ./hosts/keep/default.nix
           ./hosts/keep/disko.nix
+          ./hosts/keep/hardware-configuration.nix
           ./modules/common.nix
         ];
       };
