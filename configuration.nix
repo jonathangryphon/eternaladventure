@@ -5,7 +5,7 @@ let
   ############################
   # BOOTSTRAP FLAGS
   ############################
-  zfsPoolReady = false; # flip to true AFTER creating ZFS pool
+  zfsPoolReady = true; # flip to true AFTER creating ZFS pool
   enableSops = true; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
   #sopsNix = builtins.fetchTarball {
    # url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
@@ -45,7 +45,7 @@ in
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
   # ZFS Pools
-  #boot.zfs.extraPools = [ "backup" ];
+  boot.zfs.extraPools = [ "backup" ];
   # Since we have a Non-ZFS root (ext4 boot drive) this prevents scanning for what does not exist
   boot.zfs.forceImportRoot = false;
   # ZFS requires a Host ID 
