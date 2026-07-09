@@ -7,7 +7,7 @@
         ./server_arch.nix
         "${sops-nix}/modules/sops"
         ./sops.nix
-        ./sops-secrets.nix
+        ../sops-secrets.nix
         ./oink_ddns.nix
     ];
 

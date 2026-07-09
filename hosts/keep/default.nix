@@ -35,7 +35,7 @@
   };
 
   sops.secrets.wg-keep-key = {
-    sopsFile = ../secrets/keep.yaml;
+    sopsFile = ../../secrets/keep.yaml;
     format = "yaml";
   };
 
