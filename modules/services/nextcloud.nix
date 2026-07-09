@@ -57,5 +57,14 @@
     loadBalancer.servers = [
       { url = "http://127.0.0.1:8090"; }
     ];
-      };
+  };
+
+  sops.secrets."nextcloud/admin_password" = {
+    sopsFile = ../../secrets/nextcloud_secrets.txt.enc;
+    format = "binary";
+  };
+  
+  sops.secrets."smtp/password" = {
+    sopsFile = ../../secrets/nextcloud_smtppassword.yaml;
+  };  
 }

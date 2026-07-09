@@ -216,6 +216,40 @@
       ente-cast-service.loadBalancer.servers     = [{ url = "http://127.0.0.1:8082"; }];
     };
   };
+
+  sops.secrets."ente/key_encryption" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/key_hash" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/jwt_secret" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/garage_access_key_id" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/garage_secret_access_key" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente/garage_rpc_key" = {
+    sopsFile = ../../secrets/ente_secrets.yaml;
+    owner = "garage";
+    mode = "0600";
+  };
+  sops.secrets."ente_smtp/password" = {
+    sopsFile = ../../secrets/ente_smtp.yaml;
+    owner = "ente";
+  };
+  sops.secrets."ente_smtp/username" = {
+    sopsFile = ../../secrets/ente_smtp.yaml;
+    owner = "ente";
+  };  
 }
 
 # =============================================================================
