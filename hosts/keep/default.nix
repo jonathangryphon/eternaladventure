@@ -38,6 +38,7 @@
     sopsFile = ../../secrets/keep.yaml;
     format = "yaml";
   };
+  services.oink.enable = true;
 
   sops.age.keyFile = "/etc/nixos/secrets/age-keys.txt";
   
