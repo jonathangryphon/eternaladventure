@@ -47,7 +47,7 @@
   };
 
   # DDNS
-  services.oink.enable = true;
+  services.oink.enable = false;
 
   # "KEEP" PROXY
   networking.wireguard.interfaces.wg0 = {
