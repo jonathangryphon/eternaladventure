@@ -7,7 +7,7 @@
         ./server_arch.nix
         "${sops-nix}/modules/sops"
         ./sops.nix
-        ./oink_ddns.nix
+        # ./oink_ddns.nix NETWORKING: all routed via VPS static IP 
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports
