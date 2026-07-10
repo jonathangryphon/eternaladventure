@@ -22,10 +22,10 @@ in
     ./modules/sops.nix
     ./sops-secrets.nix
     ./users.nix
-  ]  
+    ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
-      ./modules/zfs.nix
+    ./modules/zfs.nix
     ]
     # Secrets + secret-dependent services configs
     ++ lib.optionals enableSops [
