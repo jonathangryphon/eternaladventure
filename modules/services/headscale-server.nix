@@ -2,6 +2,7 @@
 {
     services.headscale = {
         enable = true;
+        port = 4090;
         settings = {
             server_url = "https://headscale.eternaladventure.xyz";
             dns.magic_dns = true;
