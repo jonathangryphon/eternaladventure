@@ -37,7 +37,7 @@
         home-https.loadBalancer.servers = [{ address = "10.100.0.2:443"; }];
         home-http.loadBalancer.servers  = [{ address = "10.100.0.2:80"; }];
         mc-home.loadBalancer.servers    = [{ address = "10.100.0.2:33333"; }];
-        headscale-home.loadBalancer.serers = [{ address = "10.100.0.2:4090"; }];
+        headscale-home.loadBalancer.servers = [{ address = "10.100.0.2:4090"; }];
       };
     };
   };
