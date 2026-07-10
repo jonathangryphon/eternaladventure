@@ -7,6 +7,7 @@
       entryPoints.web.address = ":80";
       entryPoints.websecure.address = ":443";
       entryPoints.mc.address = ":33333";
+      entryPoints.headscale.address = ":4090";
     };
     dynamicConfigOptions.tcp = {
       routers = {
@@ -26,11 +27,17 @@
           rule = "HostSNI(`*`)";
           service = "mc-home";
         };
+        mc-passthrough = {
+          entryPoints = [ "headscale" ];
+          rule = "HostSNI(`*`)";
+          service = "headscale-home";
+        };
       };
       services = {
         home-https.loadBalancer.servers = [{ address = "10.100.0.2:443"; }];
         home-http.loadBalancer.servers  = [{ address = "10.100.0.2:80"; }];
         mc-home.loadBalancer.servers    = [{ address = "10.100.0.2:33333"; }];
+        headscale-home.loadBalancer.serers = [{ address = "10.100.0.2:4090"; }];
       };
     };
   };
