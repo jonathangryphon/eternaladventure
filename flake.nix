@@ -26,7 +26,7 @@
   };
 
 
-  outputs = { self, nixpkgs, sops-nix, disko, unstable, nixpkgs-lulu, rpi, sops-nix-lulu, ... }: @inputs{
+  outputs = { self, nixpkgs, sops-nix, disko, unstable, nixpkgs-lulu, rpi, sops-nix-lulu, ... }@inputs: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
