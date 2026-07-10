@@ -41,6 +41,8 @@
 
   sops.age.keyFile = "/etc/nixos/secrets/age-keys.txt";
   
-  system.stateVersion = "24.05";
+  # OPTIONS
+  mySsh.port = 62024;
 
+  system.stateVersion = "24.05";
 }

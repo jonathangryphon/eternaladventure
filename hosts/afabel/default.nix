@@ -17,6 +17,7 @@
 
   # OPTIONS
   myServer.dataRoot = "/tank/services"; # modules/server_arch.nix option for centralizing service data directory definitions
+  mySsh.port = 62022;
   # ZFS 
   boot.zfs.extraPools = [ "tank" ];
   boot.zfs.forceImportRoot = false; # root drive is not zfs, only ext4

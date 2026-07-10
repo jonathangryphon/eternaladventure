@@ -1,9 +1,20 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+let 
+  cfg = config.mySsh;
+in
 {
-  services.openssh = {
+  options = {
+    mySsh.port = lib.mkOption {
+      type = lib.types.int;
+      default = 62022;
+      description = "SSH port for this host.";
+    };
+  };
+  
+  config = {
+    services.openssh = {
       enable = true;
-      ports = [ 62022 ]; # security through obscurity to avoid default port 22 scanning via bots
+      ports = [ cfg.port ]; # security through obscurity to avoid default port 22 scanning via bots
 
       settings = {
         PasswordAuthentication = false;
@@ -13,6 +24,7 @@
         AllowUsers = [ "charity" "breakglass" ];
       };
     };
+  };
   
-  networking.firewall.allowedTCPPorts = [ 62022 ]; # open port for ssh
+  networking.firewall.allowedTCPPorts = [ cfg.port ]; # open port for ssh
 }

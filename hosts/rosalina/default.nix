@@ -68,6 +68,8 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
-  system.stateVersion = "25.11";
+  # OPTIONS
+  mySsh.port = 62025;
 
+  system.stateVersion = "25.11";
 }
