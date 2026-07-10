@@ -27,7 +27,7 @@
           rule = "HostSNI(`*`)";
           service = "mc-home";
         };
-        mc-passthrough = {
+        headscale-passthrough = {
           entryPoints = [ "headscale" ];
           rule = "HostSNI(`*`)";
           service = "headscale-home";
