@@ -94,7 +94,7 @@
           ./hosts/lulu/pi5-configtxt.nix
 
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
-
+          ./modules/headscale-client.nix
           ./hosts/lulu/configuration.nix
         ];
       };
