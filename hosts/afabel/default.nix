@@ -11,6 +11,7 @@
     ../../modules/services/traefik-dashboard.nix
     ../../modules/services/minecraft-server.nix
     ../../modules/users/syncoid.nix
+    ../../modules/services/headscale-server.nix  
   ];
 
   networking.hostName = "Afabel"; # cuz driven by eternity
