@@ -51,6 +51,8 @@ in
   # ZFS requires a Host ID 
   networking.hostId = "d2dfeb62";
 
+  nix.settings.trusted-users = [ "root" "charity" ];
+  
   ############################
   # Networking & Firewall
   ############################
