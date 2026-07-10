@@ -9,6 +9,13 @@
       entryPoints.mc.address = ":33333";
       # entryPoints.headscale.address = ":4090";
     };
+    dynamicConfigOptions.http = {
+      routers.http-home = {
+        rule = "PathPrefix(`/`)";
+        entryPoints = [ "web" ];
+        service = "home-http";
+      };
+    };
     dynamicConfigOptions.tcp = {
       routers = {
         https-passthrough = {
@@ -17,11 +24,11 @@
           service = "home-https";
           tls.passthrough = true;
         };
-        http-passthrough = {
-          entryPoints = [ "web" ];
-          rule = "HostSNI(`*`)";
-          service = "home-http";
-        };
+        #http-passthrough = {
+         # entryPoints = [ "web" ];
+          #rule = "HostSNI(`*`)";
+          #service = "home-http";
+        #};
         mc-passthrough = {
           entryPoints = [ "mc" ];
           rule = "HostSNI(`*`)";
