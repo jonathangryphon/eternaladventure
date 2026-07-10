@@ -8,9 +8,25 @@
     disko.url = "github:nix-community/disko"; 
     disko.inputs.nixpkgs.follows = "nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # lulu (pi5) specific — kept independent on purpose
+    nixpkgs-lulu.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    rpi.url = "github:nvmd/nixos-raspberrypi/main";
+    sops-nix-lulu.url = "github:Mic92/sops-nix";
+    sops-nix-lulu.inputs.nixpkgs.follows = "nixpkgs-lulu";  
   };
 
-  outputs = { self, nixpkgs, sops-nix, disko, unstable, ... }: {
+  nixConfig = {
+    extra-substituters = [
+      "https://nixos-raspberrypi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+    ];
+  };
+
+
+  outputs = { self, nixpkgs, sops-nix, disko, unstable, nixpkgs-lulu, rpi, sops-nix-lulu, ... }: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
@@ -54,6 +70,32 @@
           ./hosts/keep/disko.nix
           ./hosts/keep/hardware-configuration.nix
           ./modules/common.nix
+        ];
+      };
+
+      lulu = rpi.lib.nixosSystemFull {
+        system = "aarch64-linux";
+        specialArgs = inputs;
+
+        modules = [
+          ({ config, pkgs, lib, rpi, ... }: {
+            imports = with rpi.nixosModules; [
+              raspberry-pi-5.base
+              raspberry-pi-5.page-size-16k
+              raspberry-pi-5.display-vc4
+              raspberry-pi-5.bluetooth
+              usb-gadget-ethernet
+            ];
+          })
+
+          sops-nix-lulu.nixosModules.sops
+
+          ./hosts/lulu/hardware-configuration.nix
+          ./hosts/lulu/pi5-configtxt.nix
+
+          { boot.loader.raspberry-pi.bootloader = "kernel"; }
+
+          ./hosts/lulu/configuration.nix
         ];
       };
 
