@@ -7,6 +7,7 @@
         ./server_arch.nix
         "${sops-nix}/modules/sops"
         ./sops.nix
+        ./headscale-client.nix
         # ./oink_ddns.nix NETWORKING: all routed via VPS static IP 
     ];
 

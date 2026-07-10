@@ -6,6 +6,7 @@
     ../../modules/traefik.nix
     ../../modules/users/core.nix
     ../../modules/ssh.nix
+    ../../modules/headscale-server.nix
   ];
 
   # BOOT
