@@ -24,7 +24,7 @@ in
         AllowUsers = [ "charity" "breakglass" ];
       };
     };
-  };
   
-  networking.firewall.allowedTCPPorts = [ cfg.port ]; # open port for ssh
+    networking.firewall.allowedTCPPorts = [ cfg.port ]; # open port for ssh
+  };
 }
