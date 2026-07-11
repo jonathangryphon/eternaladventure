@@ -87,9 +87,9 @@
             ];
           })
 
-          sops-nix-lulu.nixosModules.sops
+          sops-nix.nixosModules.sops
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
-          
+
           ./hosts/lulu/default.nix
         ];
       };
