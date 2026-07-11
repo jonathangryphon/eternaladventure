@@ -28,7 +28,6 @@ in
     ++ lib.optionals enableSops [
    # ./modules/sops.nix
    # ./sops-secrets.nix
-    ./modules/oink_ddns.nix # lulu specific dir, needs option for domain addr like backup.eternal....
     ../../modules/wifi.nix # general dir
     ];
 
