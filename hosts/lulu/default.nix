@@ -110,12 +110,12 @@ in
     zstd
   ];
 
-  myDomain = {
-    #domain = "eternaladventure.xyz";
-    myDomain.subdomain = "backup"; 
-  };
+  myDomain.subdomain = "backup"; 
 
-  sops.secrets.wg-lulu-key = {};
+  sops.secrets.wg-lulu-key = {
+    sopsFile = ../../secrets/lulu.yaml;
+    format = "yaml";
+  };
 
   networking.wireguard.interfaces.wg1 = {   # wg1, not wg0 — avoid clash if Lulu ever also gets an afabel-facing tunnel later
     ips = [ "10.100.0.3/24" ];
