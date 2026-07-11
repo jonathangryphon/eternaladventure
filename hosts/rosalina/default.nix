@@ -1,10 +1,10 @@
-{ config, pkgs, lib, sops-nix, ... }:
+{ config, pkgs, lib, disko, sops-nix, ... }:
 {
   imports = [
     # disko takes care of this: ./hardware-rosalina.nix
-    (import disko.nix { device = "/dev/sda"; }) 
+    # (import disko.nix { device = "/dev/sda"; }) 
     ../../modules/restic.nix
-    ../../modules/zfs.nix
+    # ../../modules/zfs/base.nix
     ../../modules/traefik.nix
     ../../modules/services/nextcloud.nix
     ../../modules/services/ente.nix
