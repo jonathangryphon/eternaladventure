@@ -111,17 +111,22 @@ in
   ];
 
   myDomain = {
-  #domain = "eternaladventure.xyz";
+    #domain = "eternaladventure.xyz";
+    myDomain.subdomain = "backup"; 
+  };
 
-  records = [
-    { subdomain = ""; }
-    { subdomain = "*"; }
-    { subdomain = "backup"; }  ];
-};
+  sops.secrets.wg-lulu-key = {};
 
-
-
-
+  networking.wireguard.interfaces.wg1 = {   # wg1, not wg0 — avoid clash if Lulu ever also gets an afabel-facing tunnel later
+    ips = [ "10.100.0.3/24" ];
+    privateKeyFile = "/run/secrets/wg-lulu-key";
+    peers = [{
+      publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";   # 0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=
+      endpoint = (import /etc/nixos-local/wg-peers.nix).endpoint;  # same local-only pattern as afabel
+      allowedIPs = [ "10.100.0.1/32" ];
+      persistentKeepalive = 25;
+    }];
+  };
 
   ############################
   # First NixOS version installed
