@@ -15,13 +15,11 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/ssh.nix
     # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
     # "${sopsNix}/modules/sops"
     # sops-nix.nixosModules.sops (already imported in flake.nix)
     ./modules/sops.nix
     ./sops-secrets.nix
-    ./users.nix
     ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
@@ -31,8 +29,8 @@ in
     ++ lib.optionals enableSops [
    # ./modules/sops.nix
    # ./sops-secrets.nix
-    ./modules/oink_ddns.nix
-    ./modules/wifi.nix
+    ./modules/oink_ddns.nix # lulu specific dir, needs option for domain addr like backup.eternal....
+    ../../modules/wifi.nix # general dir
     ];
 
   ############################
@@ -52,7 +50,10 @@ in
   networking.hostId = "d2dfeb62";
 
   nix.settings.trusted-users = [ "root" "charity" ];
-  
+
+  # CUSTOM OPTIONS
+  mySsh.port = 62023;
+
   ############################
   # Networking & Firewall
   ############################
