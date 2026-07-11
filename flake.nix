@@ -24,12 +24,12 @@
   };
 
 
-  outputs = { self, nixpkgs, sops-nix, disko, unstable, nixpkgs-lulu, rpi, sops-nix-lulu, ... }@inputs: {
+  outputs = { self, nixpkgs, sops-nix, disko, rpi, ... }@inputs: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit sops-nix; };
+        specialArgs = inputs;
         modules = [ 
             ./hosts/afabel/default.nix
             ./modules/common.nix
@@ -38,7 +38,7 @@
 
       rosalina = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux"; # for x86 VPS, I guess I could maybe do aarch
-        specialArgs = { inherit sops-nix; };
+        specialArgs = inputs;
         modules = [
           disko.nixosModules.disko 
           ./hosts/rosalina/default.nix
@@ -49,7 +49,7 @@
 
       rosalina-bootstrap = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit sops-nix; };
+        specialArgs = inputs;
         modules = [
           disko.nixosModules.disko
           ./hosts/rosalina/default.nix
@@ -60,9 +60,8 @@
 
       keep = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit sops-nix; };
+        specialArgs = inputs;
         modules = [
-          sops-nix.nixosModules.sops
           disko.nixosModules.disko
           ./hosts/keep/default.nix
           ./hosts/keep/disko.nix
