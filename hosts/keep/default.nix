@@ -22,10 +22,8 @@
   
   networking.hostName = "keep";
   networking.firewall.allowedUDPPorts = [ 51820 ]; # wireguard
-  networking.firewall.allowedTCPPorts = [ 33333 ]; # minecraft custom port
-  networking.firewall.allowedTCPPorts = [ 62022 ]; # afabel
-  networking.firewall.allowedTCPPorts = [ 62023 ]; # lulu
-
+  networking.firewall.allowedTCPPorts = [ 33333 62022 62023 ]; # minecraft, afabel, lulu 
+  
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.100.0.1/24" ];
     listenPort = 51820;
