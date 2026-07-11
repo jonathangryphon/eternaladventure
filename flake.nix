@@ -94,7 +94,7 @@
           ./hosts/lulu/pi5-configtxt.nix
 
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
-          ./hosts/lulu/configuration.nix
+          ./hosts/lulu/default.nix
           # COMMON minus sops. TODO: sort through sops pins, see if we can't use just one. 
           ./modules/users/core.nix
           ./modules/ssh.nix

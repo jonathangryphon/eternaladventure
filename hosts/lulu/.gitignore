@@ -1,6 +1,0 @@
-# hardware-configuration.nix
-age-keys.txt
-.DS_Store
-result
-secrets/wg-peers.nix
-**/.DS_Store
