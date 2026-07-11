@@ -96,10 +96,10 @@
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
           ./hosts/lulu/configuration.nix
           # COMMON minus sops. TODO: sort through sops pins, see if we can't use just one. 
-          ./users/core.nix
-          ./ssh.nix
-          ./server_arch.nix
-          ./headscale-client.nix
+          ./modules/users/core.nix
+          ./modules/ssh.nix
+          ./modules/server_arch.nix
+          ./modules/headscale-client.nix
         ];
       };
 
