@@ -34,20 +34,6 @@
 
   time.timeZone = "America/Chicago";
 
-  ############################
-  # Auto Update
-  ############################
-  system.autoUpgrade = {
-    enable = true;
-    dates = "weekly";         # or "weekly"
-    persistent = true;       # keeps schedule after reboots
-    allowReboot = true;      # reboot automatically if needed (optional)
-    rebootWindow = {         # optional safe reboot window
-      lower = "02:00";
-      upper = "03:00";
-    };
-  };
-
   # DDNS
   services.oink.enable = false;
 
