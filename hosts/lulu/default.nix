@@ -3,15 +3,8 @@
   imports = [
     ./hardware-configuration.nix
     ./pi5-configtxt.nix
-    ../../modules/sops.nix
     ../../modules/zfs/syncoid-pull.nix
-    ../../modules/wifi.nix 
-    # Common except for normal sops
-    ../../modules/users/core.nix
-    ../../modules/ssh.nix
-    ../../modules/server_arch.nix
-    ../../modules/headscale-client.nix 
-    ../../modules/auto-upgrade.nix   
+    ../../modules/wifi.nix  
   ];
 
   ############################

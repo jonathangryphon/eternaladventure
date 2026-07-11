@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    # disko takes care of this: ./hardware-rosalina.nix
     ../../modules/traefik_passthrough.nix
     ../../modules/traefik.nix
     ../../modules/users/core.nix
@@ -23,7 +22,7 @@
   networking.hostName = "keep";
   networking.firewall.allowedUDPPorts = [ 51820 ]; # wireguard
   networking.firewall.allowedTCPPorts = [ 33333 62022 62023 ]; # minecraft, afabel, lulu 
-  
+
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.100.0.1/24" ];
     listenPort = 51820;

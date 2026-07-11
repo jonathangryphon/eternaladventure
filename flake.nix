@@ -3,17 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    sops-nix.url = "github:Mic92/sops-nix/9836912e37aef546029e48c8749834735a6b9dad"; # ???
+
+    sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     disko.url = "github:nix-community/disko"; 
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # lulu (pi5) specific — kept independent on purpose
-    nixpkgs-lulu.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    rpi.url = "github:nvmd/nixos-raspberrypi/main";
-    sops-nix-lulu.url = "github:Mic92/sops-nix";
-    sops-nix-lulu.inputs.nixpkgs.follows = "nixpkgs-lulu";  
+    rpi.url = "github:nvmd/nixos-raspberrypi/main"; 
   };
 
   nixConfig = {
@@ -87,10 +85,10 @@
             ];
           })
 
-          sops-nix.nixosModules.sops
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
 
           ./hosts/lulu/default.nix
+          ./modules/common.nix
         ];
       };
 

@@ -6,11 +6,11 @@
     ../../modules/zfs/base.nix
     ../../modules/traefik.nix
     ../../modules/wifi.nix
+    ../../modules/users/syncoid.nix
     ../../modules/services/nextcloud.nix
     ../../modules/services/ente.nix
     ../../modules/services/traefik-dashboard.nix
     ../../modules/services/minecraft-server.nix
-    ../../modules/users/syncoid.nix
     ../../modules/services/headscale-server.nix  
   ];
 
