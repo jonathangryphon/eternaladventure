@@ -18,7 +18,7 @@ in
     # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
     # "${sopsNix}/modules/sops"
     # sops-nix.nixosModules.sops (already imported in flake.nix)
-    ./modules/sops.nix
+    ../../modules/sops.nix
     ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
@@ -109,6 +109,19 @@ in
     lzop
     zstd
   ];
+
+  myDomain = {
+  #domain = "eternaladventure.xyz";
+
+  records = [
+    { subdomain = ""; }
+    { subdomain = "*"; }
+    { subdomain = "backup"; }  ];
+};
+
+
+
+
 
   ############################
   # First NixOS version installed
