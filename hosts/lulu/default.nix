@@ -19,7 +19,6 @@ in
     # "${sopsNix}/modules/sops"
     # sops-nix.nixosModules.sops (already imported in flake.nix)
     ./modules/sops.nix
-    ./sops-secrets.nix
     ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
