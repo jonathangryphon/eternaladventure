@@ -22,7 +22,7 @@ in
     ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
-    ./modules/zfs/syncoid-pull.nix
+    ../../modules/zfs/syncoid-pull.nix
     ]
     # Secrets + secret-dependent services configs
     ++ lib.optionals enableSops [
