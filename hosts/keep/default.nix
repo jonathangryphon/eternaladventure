@@ -23,15 +23,23 @@
   networking.hostName = "keep";
   networking.firewall.allowedUDPPorts = [ 51820 ]; # wireguard
   networking.firewall.allowedTCPPorts = [ 33333 ]; # minecraft custom port
+  networking.firewall.allowedTCPPorts = [ 62022 ]; # afabel
+  networking.firewall.allowedTCPPorts = [ 62023 ]; # lulu
 
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.100.0.1/24" ];
     listenPort = 51820;
     privateKeyFile = "/run/secrets/wg-keep-key";
-    peers = [{
-      publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
-      allowedIPs = [ "10.100.0.2/32" ];
-    }];
+    peers = [
+      {
+        publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
+        allowedIPs = [ "10.100.0.2/32" ];
+      }
+      {
+        publicKey = "SRAl4q1hX9tKFyiYejFqDI3fX7m2+J2cvr1hexKcYmI=";
+        allowedIPs = [ "10.100.0.3/32" ];
+      }
+    ];
   };
 
   sops.secrets.wg-keep-key = {
