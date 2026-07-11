@@ -3,7 +3,7 @@
   imports = [ 
     ./hardware-configuration.nix
     ../../modules/restic.nix
-    ../../modules/zfs.nix
+    ../../modules/zfs/base.nix
     ../../modules/traefik.nix
     ../../modules/wifi.nix
     ../../modules/services/nextcloud.nix

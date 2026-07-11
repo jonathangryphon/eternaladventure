@@ -22,7 +22,7 @@ in
     ]  
     # ZFS-dependent config 
     ++ lib.optionals zfsPoolReady [
-    ./modules/zfs.nix
+    ./modules/zfs/syncoid-pull.nix
     ]
     # Secrets + secret-dependent services configs
     ++ lib.optionals enableSops [
@@ -109,8 +109,6 @@ in
     lzop
     zstd
   ];
-
-  myDomain.subdomain = "backup"; 
 
   sops.secrets.wg-lulu-key = {
     sopsFile = ../../secrets/lulu.yaml;
