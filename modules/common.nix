@@ -8,7 +8,7 @@
         "${sops-nix}/modules/sops"
         ./sops.nix
         ./headscale-client.nix
-        # ./oink_ddns.nix NETWORKING: all routed via VPS static IP 
+        ./auto-upgrade.nix
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports

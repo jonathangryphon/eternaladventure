@@ -82,24 +82,15 @@
             imports = with rpi.nixosModules; [
               raspberry-pi-5.base
               raspberry-pi-5.page-size-16k
-              raspberry-pi-5.display-vc4
               raspberry-pi-5.bluetooth
               usb-gadget-ethernet
             ];
           })
 
           sops-nix-lulu.nixosModules.sops
-
-          ./hosts/lulu/hardware-configuration.nix
-          ./hosts/lulu/pi5-configtxt.nix
-
           { boot.loader.raspberry-pi.bootloader = "kernel"; }
+          
           ./hosts/lulu/default.nix
-          # COMMON minus sops. TODO: sort through sops pins, see if we can't use just one. 
-          ./modules/users/core.nix
-          ./modules/ssh.nix
-          ./modules/server_arch.nix
-          ./modules/headscale-client.nix
         ];
       };
 

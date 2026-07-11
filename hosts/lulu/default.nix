@@ -1,63 +1,35 @@
 {config, pkgs, lib,  ... }:
-
-
-let
-  ############################
-  # BOOTSTRAP FLAGS
-  ############################
-  zfsPoolReady = true; # flip to true AFTER creating ZFS pool
-  enableSops = true; # flip to true AFTER copying AGE key to /home/charity/.config/sops/age/keys.txt
-  #sopsNix = builtins.fetchTarball {
-   # url = "https://github.com/Mic92/sops-nix/archive/9836912e37aef546029e48c8749834735a6b9dad.tar.gz";
-    #sha256 = "1sk77hv4x1dg7b1c7vpi5npa7smgz726l0rzywlzw80hwk085qh4";
-  #};
-in
 {
   imports = [
     ./hardware-configuration.nix
-    # Secrets requring modules start here. Import goes top to bottom apparently, so to even use Sops, I need to move it above anything using it. 
-    # "${sopsNix}/modules/sops"
-    # sops-nix.nixosModules.sops (already imported in flake.nix)
+    ./pi5-configtxt.nix
     ../../modules/sops.nix
-    ]  
-    # ZFS-dependent config 
-    ++ lib.optionals zfsPoolReady [
     ../../modules/zfs/syncoid-pull.nix
-    ]
-    # Secrets + secret-dependent services configs
-    ++ lib.optionals enableSops [
-   # ./modules/sops.nix
-   # ./sops-secrets.nix
-    ../../modules/wifi.nix # general dir
-    ];
+    ../../modules/wifi.nix 
+    # Common except for normal sops
+    ../../modules/users/core.nix
+    ../../modules/ssh.nix
+    ../../modules/server_arch.nix
+    ../../modules/headscale-client.nix 
+    ../../modules/auto-upgrade.nix   
+  ];
 
   ############################
-  # Boot
+  # Boot / ZFS
   ############################
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-
-  # ZFS Kernel Requirements
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
-  # ZFS Pools
   boot.zfs.extraPools = [ "backup" ];
-  # Since we have a Non-ZFS root (ext4 boot drive) this prevents scanning for what does not exist
   boot.zfs.forceImportRoot = false;
-  # ZFS requires a Host ID 
-  networking.hostId = "d2dfeb62";
 
+  networking.hostId = "d2dfeb62";
   nix.settings.trusted-users = [ "root" "charity" ];
 
-  # CUSTOM OPTIONS
+  ############################
+  # Custom options
+  ############################
   mySsh.port = 62023;
-
-  ############################
-  # Networking & Firewall
-  ############################
-  # see modules/wifi.nix for Networking Configuration
-  # networking.firewall.allowedTCPPorts = [ 80 443 ]; # ssh port is defined in /modules/ssh.nix
-
+  myServer.dataRoot = "/backup/main";
   ############################
   # Host & Timezone
   ############################
@@ -72,43 +44,28 @@ in
   security.sudo.wheelNeedsPassword = false; # users do not have pws, only ssh keys for auth
 
   ############################
-  # Auto Update
+  # Nix
   ############################
-  system.autoUpgrade = {
-    enable = true;
-    dates = "weekly";         # or "weekly"
-    persistent = true;       # keeps schedule after reboots
-    allowReboot = true;      # reboot automatically if needed (optional)
-    rebootWindow = {         # optional safe reboot window
-      lower = "02:00";
-      upper = "03:00";
-    };
-  }; 
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   ############################
-  # System Packages
+  # Packages
   ############################
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    neofetch
-    sops
-    age
-    htop
-    sanoid
-    pv
-    mbuffer
-    lzop
-    zstd
+    # Core CLI
+    vim git wget btop neofetch
+
+    # Secrets
+    sops age
+
+    # ZFS backup (sanoid/syncoid pipeline)
+    sanoid pv mbuffer lzop zstd
   ];
 
+  ############################
+  # WireGuard — direct tunnel to keep, independent of afabel
+  ############################
   sops.secrets.wg-lulu-key = {
     sopsFile = ../../secrets/lulu.yaml;
     format = "yaml";
@@ -124,6 +81,18 @@ in
       persistentKeepalive = 25;
     }];
   };
+
+  ############################
+  # sops-nix-lulu pin note
+  ############################
+  # sops-nix-lulu intentionally separate from main sops-nix — must match
+  # nixpkgs-lulu (rpi flake's pinned nixpkgs), not main nixpkgs. Not mergeable.
+
+  ############################
+  # auto-upgrade — deferred, see planned modules/common/auto-upgrade.nix
+  # (allowReboot=true removed on purpose — don't let a headless ZFS/WG
+  # box reboot itself unattended; revisit with allowReboot=false design)
+  ############################
 
   ############################
   # First NixOS version installed
