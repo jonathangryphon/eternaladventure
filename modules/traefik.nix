@@ -37,8 +37,8 @@ in
       certificatesResolvers.letsencrypt.acme = {
         email = "eternaladventure@proton.me";
         storage = "${dataDir}/acme.json"; # points directly to acme.json
-        # httpChallenge.entryPoint = "web";
-        tlsChallenge = true;
+        httpChallenge.entryPoint = "web";
+        # tlsChallenge = true;
         # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"; # used for testing new services
       };
 
