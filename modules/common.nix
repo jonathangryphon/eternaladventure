@@ -9,6 +9,7 @@
         ./sops.nix
         ./headscale-client.nix
         ./auto-upgrade.nix
+        ./node-exporter.nix
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports
