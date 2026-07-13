@@ -6,6 +6,7 @@
     ../../modules/zfs/base.nix
     ../../modules/traefik.nix
     ../../modules/wifi.nix
+    ../../modules/monitoring.nix
     ../../modules/users/syncoid.nix
     ../../modules/services/nextcloud.nix
     ../../modules/services/ente.nix
