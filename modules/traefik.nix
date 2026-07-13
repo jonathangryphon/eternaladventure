@@ -38,7 +38,7 @@ in
         email = "eternaladventure@proton.me";
         storage = "${dataDir}/acme.json"; # points directly to acme.json
         httpChallenge.entryPoint = "web";
-        tlsChallenge
+        # tlsChallenge
         # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"; used for testing new services
       };
 
