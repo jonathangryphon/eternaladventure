@@ -54,7 +54,7 @@
       tls.certResolver = "letsencrypt";   # match whatever afabel's other routers actually use
     };
     services.grafana-service.loadBalancer.servers = [
-      { url = "http://${toString config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}"; }
+      { url = "http://127.0.0.1:3000"; }
     ];
   };
 }
