@@ -1,10 +1,10 @@
 # /etc/nixos/hosts/disks/rosalina-disk.nix
-{ device ? "/dev/sda", ... }:
+{ ... }:
 {
   disko.devices = {
     disk.main = {
       type = "disk";
-      device = device;  # verify with lsblk on VPS
+      device = "/dev/sda";  # verify with lsblk on VPS
       content = {
         type = "gpt";
         partitions = {
