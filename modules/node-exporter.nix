@@ -45,7 +45,7 @@
   # Only allow scraping from Prometheus's host (afabel) over the tailnet,
   # not the public internet. Adjust the CIDR/IP to afabel's actual tailscale IP.
   networking.firewall.extraCommands = ''
-    for port in 9100 9134 9940 9997; do
+    for port in 9100 9134 9633 9940 9997; do
       iptables -A nixos-fw -p tcp --dport $port -s 100.64.0.4/32 -j nixos-fw-accept
     done
   '';

@@ -31,8 +31,21 @@
       {
         job_name = "minecraft";
         static_configs = [
-            { targets = [ "afabel.ts.eternaladventure.xyz:9940" ]; }
+          {
+            targets = [ "afabel.ts.eternaladventure.xyz:9940" ];
+            labels.server_name = "afabel";
+          }
         ];
+      }
+      {
+      job_name = "smartctl";
+      static_configs = [
+          { targets = [
+              "afabel.ts.eternaladventure.xyz:9633"
+              "lulu.ts.eternaladventure.xyz:9633"
+          ];
+          }
+      ];
       }
     ];
   };
