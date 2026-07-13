@@ -9,6 +9,7 @@
     ../../modules/monitoring.nix
     ../../modules/users/syncoid.nix
     ../../modules/services/nextcloud.nix
+    ../../modules/services/jellyfin.nix
     ../../modules/services/ente.nix
     ../../modules/services/traefik-dashboard.nix
     ../../modules/services/minecraft-server.nix

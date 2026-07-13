@@ -33,7 +33,6 @@
         static_configs = [
           {
             targets = [ "afabel.ts.eternaladventure.xyz:9940" ];
-            labels.server_name = "afabel";
           }
         ];
       }
