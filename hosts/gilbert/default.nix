@@ -5,7 +5,7 @@
   
   networking.hostName = "Gilbert";
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.systemPackages = with pkgs; [
     git
