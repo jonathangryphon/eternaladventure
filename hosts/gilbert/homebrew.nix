@@ -41,7 +41,7 @@
       "vlc"
       "vscodium"
       "whatsapp"
-      "tailscale"
+      "tailscale-app"
     ];
 
     masApps = {
