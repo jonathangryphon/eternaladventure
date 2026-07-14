@@ -10,6 +10,11 @@
   system.primaryUser = "jonathangryphon";
   system.defaults.screencapture.location = "~/testphotos/screenshots";
 
+  homebrew.enable = true;
+  homebrew.casks = [
+    "wireshark"
+  ];
+  
   environment.systemPackages = with pkgs; [
     git
     curl
