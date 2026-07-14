@@ -2,6 +2,7 @@
 
 {
   imports = [ ./homebrew.nix ];
+  
   nix.enable = false;
   
   networking.hostName = "Gilbert";
@@ -10,11 +11,6 @@
 
   system.primaryUser = "jonathangryphon";
   system.defaults.screencapture.location = "~/testphotos/screenshots";
-
-  homebrew.enable = true;
-  homebrew.casks = [
-    "wireshark"
-  ];
   
   system.defaults = {
     finder = {
