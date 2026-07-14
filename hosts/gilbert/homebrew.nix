@@ -14,11 +14,6 @@
       # "homebrew/cask-fonts"
     ];
 
-    brews = [
-      # "mas" # if you want to manage Mac App Store apps below
-      "weasyprint"
-    ];
-
     casks = [ # Fill in with GUI apps that aren't in nixpkgs
       "balenaetcher"
       "bitwarden"

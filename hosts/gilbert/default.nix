@@ -2,7 +2,7 @@
 
 {
   imports = [ ./homebrew.nix ];
-  
+
   nix.enable = false;
   
   networking.hostName = "Gilbert";
@@ -19,6 +19,13 @@
       ShowPathbar = true;
       ShowStatusBar = true;
     };
+  };
+
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
   };
 
   environment.systemPackages = with pkgs; [
