@@ -5,6 +5,8 @@
   
   networking.hostName = "Gilbert";
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   environment.systemPackages = with pkgs; [
     git
     curl
