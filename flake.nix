@@ -10,6 +10,9 @@
     disko.url = "github:nix-community/disko"; 
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # lulu (pi5) specific — kept independent on purpose
     rpi.url = "github:nvmd/nixos-raspberrypi/main"; 
   };
@@ -24,7 +27,7 @@
   };
 
 
-  outputs = { self, nixpkgs, sops-nix, disko, rpi, ... }@inputs: {
+  outputs = { self, nixpkgs, sops-nix, disko, rpi, darwin, ... }@inputs: {
     nixosConfigurations = {
 
       afabel = nixpkgs.lib.nixosSystem {
@@ -91,6 +94,15 @@
         ];
       };
 
+    };
+    darwinConfigurations = {
+      gilbert = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = inputs;
+        modules = [
+          ./hosts/gilbert/default.nix
+        ];
+      };
     };
   };
 }
