@@ -54,6 +54,16 @@ in
       PORKBUN_SECRET_API_KEY=${config.sops.placeholder."porkbun/secretapikey"}
     '';
   };
-  
-  systemd.services.traefik.serviceConfig.EnvironmentFile = config.sops.templates."traefik-porkbun.env".path;
+
+  sops.secrets."porkbun/apikey" = {
+    sopsFile = ../secrets/porkbun_secrets.yaml;
+  };
+
+  sops.secrets."porkbun/secretapikey" = {
+    sopsFile = ../secrets/porkbun_secrets.yaml;
+  };
+
+  systemd.services.traefik = {
+    serviceConfig.EnvironmentFile = config.sops.templates."traefik-porkbun.env".path;
+  };
 }
