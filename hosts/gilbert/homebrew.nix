@@ -10,6 +10,10 @@
       cleanup = "zap"; # remove brews/casks/taps not listed here
     };
 
+    brews = [
+      "weasyprint"
+    ];
+
     taps = [
       # "homebrew/cask-fonts"
     ];
