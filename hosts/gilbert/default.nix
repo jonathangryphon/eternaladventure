@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./homebrew.nix ];
   nix.enable = false;
   
   networking.hostName = "Gilbert";
@@ -15,12 +16,29 @@
     "wireshark"
   ];
   
+  system.defaults = {
+    finder = {
+      AppleShowAllExtensions = true;
+      FXPreferredViewStyle = "Nlsv"; # list view
+      ShowPathbar = true;
+      ShowStatusBar = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     git
     curl
     wget
     fastfetch
     btop
+    cmatrix
+    wireguard-tools
+    smartmontools
+    sops
+    age
+    sherlock
+    exiftool
+    asciiquarium
   ];
 
   system.stateVersion = 6;
