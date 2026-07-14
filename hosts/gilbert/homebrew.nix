@@ -20,28 +20,28 @@
     ];
 
     casks = [ # Fill in with GUI apps that aren't in nixpkgs
-      balenaetcher
-      bitwarden
-      cryptomator
-      duckduckgo
-      ente
-      ente-auth
-      firefox
-      google-chrome
-      joplin
-      minecraft
-      nextcloud
-      orion
-      proton-drive
-      protonvpn
-      qbittorrent
-      signal
-      spotify
-      utm
-      vlc
-      vscodium
-      whatsapp
-      tailscale
+      "balenaetcher"
+      "bitwarden"
+      "cryptomator"
+      "duckduckgo"
+      "ente"
+      "ente-auth"
+      "firefox"
+      "google-chrome"
+      "joplin"
+      "minecraft"
+      "nextcloud"
+      "orion"
+      "proton-drive"
+      "protonvpn"
+      "qbittorrent"
+      "signal"
+      "spotify"
+      "utm"
+      "vlc"
+      "vscodium"
+      "whatsapp"
+      "tailscale"
     ];
 
     masApps = {
