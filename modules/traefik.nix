@@ -40,7 +40,7 @@ in
         # httpChallenge.entryPoint = "web";
         # tlsChallenge = true;
         dnsChallenge.provider = "porkbun";
-        caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"; # used for testing new services
+        # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"; # used for testing new services
       };
 
       accessLog = { }; # enabled
