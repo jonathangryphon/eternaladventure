@@ -60,7 +60,7 @@
     sanoid pv mbuffer lzop zstd
 
     # Media/file tools (Nextcloud/Ente related?)
-    ffmpeg exiftool
+    ffmpeg exiftool jellyfin jellyfin-ffmpeg
   ];
 
   ############################
