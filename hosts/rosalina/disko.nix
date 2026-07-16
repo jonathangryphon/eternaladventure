@@ -86,7 +86,7 @@
         "services" = {
           type = "zfs_fs";
           options = {
-            mountpoint = config.myServer.dataRoot;;
+            mountpoint = config.myServer.dataRoot;
             encryption = "aes-256-gcm";
             keyformat = "passphrase";
             keylocation = "prompt";
