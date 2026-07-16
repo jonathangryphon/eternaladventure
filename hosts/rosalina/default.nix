@@ -75,8 +75,10 @@
     ips = [ "10.100.0.7/24" ];
     privateKeyFile = "/run/secrets/wg-rosalina-key";
     peers = [{
-      publicKey = "<keep's wg public key>";
-      endpoint = (import /etc/nixos-local/wg-peers.nix).endpoint;
+      publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";
+      endpoint = if builtins.pathExists /etc/nixos-local/wg-peers.nix
+        then (import /etc/nixos-local/wg-peers.nix).endpoint
+        else "keep.eternaladventure.xyz"; # fallback literal, override locally later
       allowedIPs = [ "10.100.0.1/32" ];
       persistentKeepalive = 25;
     }];
