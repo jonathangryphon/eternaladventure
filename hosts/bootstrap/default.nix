@@ -4,6 +4,7 @@
     # disko takes care of this: ./hardware-rosalina.nix
     # (import disko.nix { device = "/dev/sda"; }) 
     ../../modules/zfs/base.nix
+    ./hardware-bootstrap.nix
   ];
 
   networking.hostName = "bootstrap"; 
