@@ -50,14 +50,14 @@
         ];
       };
 
-      rosalina-bootstrap = nixpkgs.lib.nixosSystem {
+      bootstrap = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           disko.nixosModules.disko
-          ./hosts/rosalina/default.nix
-          ./hosts/rosalina/disko.nix
-          ./modules/common.nix
+          ./hosts/bootstrap/default.nix
+          ./hosts/boostrap/disko.nix
+          ./modules/bootstrap.nix
         ];
       };
 
