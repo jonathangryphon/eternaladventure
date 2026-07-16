@@ -56,7 +56,7 @@
         modules = [
           disko.nixosModules.disko
           ./hosts/bootstrap/default.nix
-          ./hosts/boostrap/disko.nix
+          ./hosts/bootstrap/disko.nix
           ./modules/bootstrap.nix
         ];
       };
