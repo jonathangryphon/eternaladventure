@@ -6,11 +6,13 @@
     ../../modules/restic.nix
     # ../../modules/zfs/base.nix
     ../../modules/traefik.nix
+    ../../modules/users/syncoid.nix
     ../../modules/services/nextcloud.nix
+    ../../modules/services/jellyfin.nix
     ../../modules/services/ente.nix
     ../../modules/services/traefik-dashboard.nix
     ../../modules/services/minecraft-server.nix
-    ../../modules/users/syncoid.nix
+    ../../modules/services/headscale-server.nix
   ];
 
   networking.hostName = "Rosalina"; # cuz the vps lives in a galaxy
