@@ -50,8 +50,8 @@
     matchConfig.Name = "eth0";
     networkConfig.DHCP = "no";
     address = [
-      "37.27.178.222/32" # VPS IPv4 addr
-      "2a01:4f9:c010:b39f::1/64" # VPS IPv6 addr
+      "37.27.222.245/32" # VPS IPv4 addr
+      "2a01:4f9:c015:91a3::/64" # VPS IPv6 addr
     ];
     routes = [ # VPS gateway info
       { routeConfig.Destination = "172.31.1.1"; } 
@@ -62,7 +62,7 @@
   };
 
   networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.100.0.7/24" ];
+    ips = [ "10.100.0.8/24" ];
     privateKeyFile = "/run/secrets/wg-rosalina-key";
     peers = [{
       publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";
@@ -81,7 +81,7 @@
 
 
   # OPTIONS
-  mySsh.port = 62027;
+  mySsh.port = 62028;
 
   system.stateVersion = "25.11";
 }
