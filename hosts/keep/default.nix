@@ -29,13 +29,17 @@
     privateKeyFile = "/run/secrets/wg-keep-key";
     peers = [
       {
-        publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE="; # fill
+        publicKey = "ux+nVl+PYXFWASdRiLHzBIl47pomj7i9tViMGghPXWE=";
         allowedIPs = [ "10.100.0.2/32" ];
       }
       {
         publicKey = "SRAl4q1hX9tKFyiYejFqDI3fX7m2+J2cvr1hexKcYmI=";
         allowedIPs = [ "10.100.0.3/32" ];
       }
+      {
+        publicKey = "Gv1GYrjYO/SlETPsrB90/qscR5NYpiiW4Z5tKPPVOBI=";
+        allowedIPs = [ "10.100.0.7/32" ];
+      }      
     ];
   };
 

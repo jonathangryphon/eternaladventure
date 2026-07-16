@@ -71,6 +71,23 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.100.0.7/24" ];
+    privateKeyFile = "/run/secrets/wg-rosalina-key";
+    peers = [{
+      publicKey = "<keep's wg public key>";
+      endpoint = (import /etc/nixos-local/wg-peers.nix).endpoint;
+      allowedIPs = [ "10.100.0.1/32" ];
+      persistentKeepalive = 25;
+    }];
+  };
+
+  sops.secrets.wg-rosalina-key = {
+    sopsFile = ../../secrets/rosalina.yaml;
+    format = "yaml";
+  };
+
+
   # OPTIONS
   mySsh.port = 62025;
   myServer.restic.repoPath = "b2:eternaladventure:/rosalina";
