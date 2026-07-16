@@ -19,7 +19,8 @@
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false; # disables that networkd check service entirely to prevent weird buggy issue
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
-
+  boot.initrd.supportedFilesystems = [ "zfs" ]
+  
   # ZFS 
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" ];
