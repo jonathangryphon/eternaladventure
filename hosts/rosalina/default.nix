@@ -4,8 +4,9 @@
     # disko takes care of this: ./hardware-rosalina.nix
     # (import disko.nix { device = "/dev/sda"; }) 
     ../../modules/restic.nix
-    # ../../modules/zfs/base.nix
+    ../../modules/zfs/base.nix
     ../../modules/traefik.nix
+    ../../modules/monitoring.nix
     ../../modules/users/syncoid.nix
     ../../modules/services/nextcloud.nix
     ../../modules/services/jellyfin.nix
@@ -72,6 +73,7 @@
 
   # OPTIONS
   mySsh.port = 62025;
+  myServer.restic.repoPath = "b2:eternaladventure:/rosalina";
 
   system.stateVersion = "25.11";
 }
