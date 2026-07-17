@@ -45,10 +45,10 @@
     fsType = "zfs";
     options = [ "zfsutil" ];
   };
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D45D-0AB7";
-    fsType = "vfat";
-  };
+  #fileSystems."/boot" = {
+   # device = "/dev/disk/by-uuid/D45D-0AB7";
+    #fsType = "vfat";
+  #};
 
   # NETWORKING
   networking.useNetworkd = true;
