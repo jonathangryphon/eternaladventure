@@ -24,7 +24,7 @@
   boot.loader.grub.copyKernels = true;
   # ZFS 
   boot.zfs.forceImportRoot = true;
-  boot.zfs.extraPools = [ "tank" ];
+  boot.zfs.extraPools = [ "tank" "tank" ];
   networking.hostId = "a8b8c8d8";
   myServer.dataRoot = "/var/lib/services";
 
@@ -98,7 +98,24 @@
     KbdInteractiveAuthentication = lib.mkForce false;
     AllowUsers = [ "charity" "breakglass" "bootstrap" ];
   };
+  
+  sops.secrets.zfs-data-key = {
+    sopsFile = ../../secrets/zfs-data-key.yaml;
+    format = "yaml";
+  };
 
+  systemd.services.zfs-load-key-data = {
+    description = "Load ZFS encryption key for data/services";
+    after = [ "zfs-import-data.service" "sops-install-secrets.service" ];
+    wants = [ "zfs-import-data.service" "sops-install-secrets.service" ];
+    before = [ "zfs-mount.service" ];
+    wantedBy = [ "zfs-mount.service" ];
+    serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = "${pkgs.zfs}/bin/zfs load-key data/services";
+    };
+  };
 
   # OPTIONS
   mySsh.port = 62028;

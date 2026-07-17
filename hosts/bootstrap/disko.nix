@@ -89,7 +89,7 @@
             mountpoint = config.myServer.dataRoot;
             encryption = "aes-256-gcm";
             keyformat = "passphrase";
-            keylocation = "prompt";
+            keylocation = "file:///run/secrets/zfs-services-key";
             atime = "off";
           };
         };
