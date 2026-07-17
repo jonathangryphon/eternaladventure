@@ -51,7 +51,7 @@
     package = pkgs.garage;
 
     settings = {
-      metadata_dir = "/var/lib/garage/meta";
+      metadata_dir = "${config.myServer.dataRoot}/garage/meta";
       data_dir     = "${config.myServer.dataRoot}/garage/data";
 
       replication_factor = 1;
