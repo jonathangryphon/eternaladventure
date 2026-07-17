@@ -10,8 +10,6 @@
         ./headscale-client.nix
         ./auto-upgrade.nix
         ./node-exporter.nix
-    ] ++ lib.optionals config.myServer.runServices [
-        ./services.nix
     ];
 
 

@@ -8,6 +8,7 @@
     ../../modules/wifi.nix
     ../../modules/monitoring.nix
     ../../modules/users/syncoid.nix  
+    ../../modules/services.nix
   ];
 
   networking.hostName = "Afabel"; # cuz driven by eternity
@@ -16,7 +17,6 @@
   myServer.dataRoot = "/tank/services"; # modules/server_arch.nix option for centralizing service data directory definitions
   mySsh.port = 62022;
   myServer.restic.repoPath = "b2:eternaladventure";
-  myserver.runServices = true;
 
   # ZFS 
   boot.zfs.extraPools = [ "tank" ];
