@@ -24,7 +24,7 @@
   boot.loader.grub.copyKernels = true;
   # ZFS 
   boot.zfs.forceImportRoot = true;
-  boot.zfs.extraPools = [ "tank" "tank" ];
+  boot.zfs.extraPools = [ "tank" "data" ];
   networking.hostId = "a8b8c8d8";
   myServer.dataRoot = "/var/lib/services";
 
