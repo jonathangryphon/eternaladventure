@@ -7,7 +7,7 @@
         ./server_arch.nix
         "${sops-nix}/modules/sops"
         ./sops.nix
-        ./headscale-client.nix
+        # ./headscale-client.nix
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports

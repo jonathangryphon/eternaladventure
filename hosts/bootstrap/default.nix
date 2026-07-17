@@ -67,30 +67,30 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
-  networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.100.0.8/24" ];
-    privateKeyFile = "/run/secrets/wg-rosalina-key";
-    peers = [{
-      publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";
-      endpoint = if builtins.pathExists /etc/nixos-local/wg-peers.nix
-        then (import /etc/nixos-local/wg-peers.nix).endpoint
-        else "keep.eternaladventure.xyz"; # fallback literal, override locally later
-      allowedIPs = [ "10.100.0.1/32" ];
-      persistentKeepalive = 25;
-    }];
-  };
+  #networking.wireguard.interfaces.wg0 = {
+   # ips = [ "10.100.0.8/24" ];
+    #privateKeyFile = "/run/secrets/wg-rosalina-key";
+    #peers = [{
+    #  publicKey = "0iQVcRdUygTb1f8afgPXnrzj1CiDMUH3LP/JURY9LQY=";
+    #  endpoint = if builtins.pathExists /etc/nixos-local/wg-peers.nix
+    #    then (import /etc/nixos-local/wg-peers.nix).endpoint
+    #    else "keep.eternaladventure.xyz"; # fallback literal, override locally later
+    #  allowedIPs = [ "10.100.0.1/32" ];
+    #  persistentKeepalive = 25;
+   # }];
+  #};
 
-  sops.secrets.wg-rosalina-key = {
-    sopsFile = ../../secrets/rosalina.yaml;
-    format = "yaml";
-  };
+  #sops.secrets.wg-rosalina-key = {
+  #  sopsFile = ../../secrets/rosalina.yaml;
+  #  format = "yaml";
+  #};
 
   # TEMP USER
   users.users.bootstrap = {
     isNormalUser = true;
     description = "temporary bootstrap recovery user";
     extraGroups = [ "wheel" ];
-    hashedPassword = "$6$JoxSgx6bmdYL3Zxa$oSuuFRW/f4glwueBQp/XMmNaFw7QgGYES/sKYwcdqLZuU/k3GLuDZgJCeqEeEDe0HyLd8rJujTlfhNoanQedn";
+    hashedPassword = "$6$3a9LukEfdq.2jzGY$b/HQaYoycYxW/4DbvliJ.jw4BdBBqGv6d8Ch9dhSNu1rHFwmnzORVTkgSOXAANNt4m5YY/f2.47OggeAGTwqD0";
  };
 
   services.openssh.settings = {
