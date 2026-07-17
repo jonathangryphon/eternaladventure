@@ -58,9 +58,6 @@
 
     zpool.tank = {
       type = "zpool";
-      options = {
-        compatibility = "grub2";
-      };
       rootFsOptions = {
         compression = "zstd";
         "com.sun:auto-snapshot" = "false";
