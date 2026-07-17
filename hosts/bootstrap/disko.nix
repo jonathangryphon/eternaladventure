@@ -58,11 +58,13 @@
 
     zpool.tank = {
       type = "zpool";
+      options = {
+        compatibility = "grub2";
+      };
       rootFsOptions = {
         compression = "zstd";
         "com.sun:auto-snapshot" = "false";
         mountpoint = "none";
-        compatibility = "grub2";
       };
       datasets = {
         "local/root" = {
