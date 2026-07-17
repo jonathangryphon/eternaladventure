@@ -15,15 +15,13 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
   boot.loader.grub.enable = lib.mkForce true;
-  boot.loader.grub.efiSupport = lib.mkForce true;
-  # boot.loader.efiInstallAsRemovable = lib.mkForce true;
   boot.loader.grub.zfsSupport = true;
   systemd.network.wait-online.anyInterface = true; # prevents weird networkd error about being online, well, it should have.... but networkd is weird with pre-configured networks so we also add the below line (which makes this unnecessary bloat)
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false; # disables that networkd check service entirely to prevent weird buggy issue
   boot.kernelModules = [ "zfs" ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.initrd.supportedFilesystems = [ "zfs" ];
-
+  boot.loader.grub.copyKernels = true;
   # ZFS 
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" ];
