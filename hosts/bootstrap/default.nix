@@ -85,6 +85,20 @@
     format = "yaml";
   };
 
+  # TEMP USER
+  users.users.bootstrap = {
+    isNormalUser = true;
+    description = "temporary bootstrap recovery user";
+    extraGroups = [ "wheel" ];
+    hashedPassword = "$6$JoxSgx6bmdYL3Zxa$oSuuFRW/f4glwueBQp/XMmNaFw7QgGYES/sKYwcdqLZuU/k3GLuDZgJCeqEeEDe0HyLd8rJujTlfhNoanQedn";
+ };
+
+  services.openssh.settings = {
+    PasswordAuthentication = lib.mkForce true;
+    KbdInteractiveAuthentication = lib.mkForce false;
+    AllowUsers = [ "charity" "breakglass" "bootstrap" ];
+  };
+
 
   # OPTIONS
   mySsh.port = 62028;
