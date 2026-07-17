@@ -111,9 +111,14 @@
     before = [ "zfs-mount.service" ];
     wantedBy = [ "zfs-mount.service" ];
     serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "${pkgs.zfs}/bin/zfs load-key data/services";
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "zfs-load-key-data" ''
+        set -e
+        if [ "$(${pkgs.zfs}/bin/zfs get -H -o value keystatus data/services)" != "available" ]; then
+          ${pkgs.zfs}/bin/zfs load-key data/services
+        fi
+      '';
     };
   };
 
