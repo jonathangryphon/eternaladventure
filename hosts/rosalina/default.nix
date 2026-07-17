@@ -115,7 +115,7 @@
 
   # OPTIONS
   mySsh.port = 62025;
-  myServer.dataRoot = "/data/services";
+  myServer.dataRoot = "/var/lib/services";
   myServer.restic.repoPath = "b2:eternaladventure:/rosalina";
 
   system.stateVersion = "25.11";
