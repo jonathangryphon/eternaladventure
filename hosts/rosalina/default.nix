@@ -35,7 +35,6 @@
   boot.zfs.forceImportRoot = true;
   boot.zfs.extraPools = [ "tank" "data" ];
   networking.hostId = "a8b8c8d8";
-  myServer.dataRoot = "/var/lib/services";
 
   # DDNS
   # TODO: remove module from hosts with static IPs entirely
@@ -116,7 +115,7 @@
 
   # OPTIONS
   mySsh.port = 62025;
-  myServer.dataRoot = "/tank/services";
+  myServer.dataRoot = "/data/services";
   myServer.restic.repoPath = "b2:eternaladventure:/rosalina";
 
   system.stateVersion = "25.11";
