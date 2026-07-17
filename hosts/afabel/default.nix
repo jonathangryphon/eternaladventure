@@ -7,13 +7,7 @@
     ../../modules/traefik.nix
     ../../modules/wifi.nix
     ../../modules/monitoring.nix
-    ../../modules/users/syncoid.nix
-    ../../modules/services/nextcloud.nix
-    ../../modules/services/jellyfin.nix
-    ../../modules/services/ente.nix
-    ../../modules/services/traefik-dashboard.nix
-    ../../modules/services/minecraft-server.nix
-    ../../modules/services/headscale-server.nix  
+    ../../modules/users/syncoid.nix  
   ];
 
   networking.hostName = "Afabel"; # cuz driven by eternity
@@ -22,6 +16,7 @@
   myServer.dataRoot = "/tank/services"; # modules/server_arch.nix option for centralizing service data directory definitions
   mySsh.port = 62022;
   myServer.restic.repoPath = "b2:eternaladventure";
+  myserver.runServices = true;
 
   # ZFS 
   boot.zfs.extraPools = [ "tank" ];

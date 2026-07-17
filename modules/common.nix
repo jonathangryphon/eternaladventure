@@ -10,7 +10,10 @@
         ./headscale-client.nix
         ./auto-upgrade.nix
         ./node-exporter.nix
+    ] ++ lib.optionals config.myServer.runServices [
+        ./services.nix
     ];
+
 
     networking.firewall.allowedTCPPorts = [ 80 443 ]; # base ports
     i18n.defaultLocale = "en_US.UTF-8";
