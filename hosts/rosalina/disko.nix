@@ -101,7 +101,7 @@
         "services/postgresql" = {
           type = "zfs_fs";
           options.recordsize = "8K";
-          compression = "zstd";
+          options.compression = "zstd";
         };
         "services/ente" = { type = "zfs_fs"; };
         "services/garage" = { type = "zfs_fs"; };
