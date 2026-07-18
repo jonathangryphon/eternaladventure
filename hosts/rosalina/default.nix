@@ -7,6 +7,7 @@
     ../../modules/traefik.nix
     ../../modules/monitoring.nix
     ../../modules/users/syncoid.nix
+    ../../modules/services.nix
   ];
 
   networking.hostName = "Rosalina"; # cuz the vps lives in a galaxy
