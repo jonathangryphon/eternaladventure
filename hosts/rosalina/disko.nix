@@ -62,6 +62,8 @@
         compression = "zstd";
         "com.sun:auto-snapshot" = "false";
         mountpoint = "none";
+        acltype = "posixacl";
+        xattr = "sa";
       };
       datasets = {
         "local/root" = {
@@ -81,6 +83,8 @@
         compression = "zstd";
         "com.sun:auto-snapshot" = "false";
         mountpoint = "none";
+        acltype = "posixacl";
+        xattr = "sa";
       };
       datasets = {
         "services" = {
@@ -89,7 +93,7 @@
             mountpoint = config.myServer.dataRoot;
             encryption = "aes-256-gcm";
             keyformat = "passphrase";
-            keylocation = "prompt";
+            keylocation = "file:///run/secrets/zfs-data-key";
             atime = "off";
           };
         };
@@ -97,6 +101,7 @@
         "services/postgresql" = {
           type = "zfs_fs";
           options.recordsize = "8K";
+          compression = "zstd";
         };
         "services/ente" = { type = "zfs_fs"; };
         "services/garage" = { type = "zfs_fs"; };

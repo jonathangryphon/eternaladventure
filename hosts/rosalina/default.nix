@@ -54,8 +54,8 @@
     matchConfig.Name = "eth0";
     networkConfig.DHCP = "no";
     address = [
-      "37.27.178.222/32" # VPS IPv4 addr
-      "2a01:4f9:c010:b39f::1/64" # VPS IPv6 addr
+      "37.27.222.245/32" # VPS IPv4 addr
+      "2a01:4f9:c015:91a3::1/64" # VPS IPv6 addr
     ];
     routes = [ # VPS gateway info
       { routeConfig.Destination = "172.31.1.1"; } 
