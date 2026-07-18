@@ -4,7 +4,7 @@ in {
   options.myServer.restic = {
     repoPath = mkOption {
       type = types.str;
-      default = "b2:eternaladventure";
+      default = "b2:eternal-adventure";
       description = "Restic repository path for this host (root for afabel, prefixed for others).";
     };
   };
