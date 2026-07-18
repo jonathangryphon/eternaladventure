@@ -74,6 +74,8 @@
   systemd.services.garage.serviceConfig.StateDirectory = "garage";
   systemd.services.garage.serviceConfig.ReadWritePaths = [ "${config.myServer.dataRoot}/garage/data" ];
 
+  systemd.services.garage.unitConfig.RequiresMountsFor = "${config.myServer.dataRoot}/garage";
+  systemd.services.postgresql.unitConfig.RequiresMountsFor = "${config.myServer.dataRoot}/postgresql";
   # ---------------------------------------------------------------------------
   # 2. ENTE API (museum) — binds to 127.0.0.1:8080 by default
   # ---------------------------------------------------------------------------
