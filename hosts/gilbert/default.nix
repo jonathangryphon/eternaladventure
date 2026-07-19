@@ -36,7 +36,7 @@
       persistent-others = [ ];
       autohide = true;
       show-recents = false;
-    }
+    };
   };
 
   # Safari default search engine + default browser (requires `duti` in systemPackages)
