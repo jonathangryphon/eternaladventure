@@ -8,7 +8,7 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  system.primaryUser = "jonathangryphon";
+  system.primaryUser = "charity";
   system.defaults.screencapture.location = "~/testphotos/screenshots";
   
   system.defaults = {
