@@ -41,7 +41,7 @@
 
   # Safari default search engine + default browser (requires `duti` in systemPackages)
   system.activationScripts.postActivation.text = ''
-    sudo -u jonathangryphon defaults write com.apple.Safari SearchProviderShortName -string "DuckDuckGo"
+    sudo -u charity defaults write com.apple.Safari SearchProviderShortName -string "DuckDuckGo"
   '';
 
   programs.zsh = {
