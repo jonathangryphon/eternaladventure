@@ -42,9 +42,6 @@
       wvous-br-corner = 1;      
     };
     NSGlobalDomain = {
-      AppleLocale = "en_US@rg=gbzzzz"; # US language, GB (dd/mm/yy) region formatting
-      AppleMetricUnits = 1;
-      AppleMeasurementUnits = "Centimeters";
       AppleICUForce24HourTime = true;
     };
     menuExtraClock = {
