@@ -41,6 +41,7 @@
       "vscodium"
       "whatsapp"
       "tailscale-app"
+      "prismlauncher"
     ];
 
     masApps = {
