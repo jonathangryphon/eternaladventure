@@ -47,7 +47,6 @@
     menuExtraClock = {
       Show24Hour = true;
       ShowDate = 1; # always show date
-      DateFormat = "EEE d MMM"; # e.g. "Sun 19 Jul"
     };    
   };
 
