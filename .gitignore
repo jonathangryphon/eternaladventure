@@ -4,3 +4,4 @@ age-keys.txt
 result
 secrets/wg-peers.nix
 **/.DS_Store
+.envrc
