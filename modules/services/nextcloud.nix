@@ -11,6 +11,7 @@
       dbtype = "sqlite";
     };
     settings = {
+      log_type = "file";
       overwriteprotocol = "https";
       "overwrite.cli.url" = "https://nextcloud.eternaladventure.xyz";
       trusted_proxies = [ "127.0.0.1" ];
