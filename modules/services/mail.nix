@@ -77,6 +77,7 @@ in
           secret   = "%{file:/run/credentials/stalwart.service/mailjet-pass}%";
         };
       };
+    };
   };
   # let stalwart read the ACME-produced cert files
   users.users.stalwart.extraGroups = [ "acme" ];
