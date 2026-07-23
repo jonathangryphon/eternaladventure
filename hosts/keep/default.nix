@@ -44,6 +44,7 @@
   };
 
   # MAIL SERVER FORWARDING VIA NAT
+  networking.nftables.enable = true;
   networking.nftables.ruleset = ''
     table inet nat {
       chain prerouting {
