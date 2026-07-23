@@ -49,7 +49,7 @@
     table inet nat {
       chain prerouting {
         type nat hook prerouting priority -100;
-        tcp dport { 25, 465, 587, 993 } dnat to 10.100.0.2
+        tcp dport { 25, 465, 587, 993 } dnat ip to 10.100.0.2
       }
       chain postrouting {
         type nat hook postrouting priority 100;
