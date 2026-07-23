@@ -25,7 +25,7 @@ in
     credentials = {
       mailjet-user = config.sops.secrets."mailjet-api-key".path;
       mailjet-pass = config.sops.secrets."mailjet-secret-key".path;
-      admin-secret = config.sops.secrets."stalwart-admin-secret".path;
+      admin-secret = config.sops.secrets."admin-secret".path;
     };
 
     settings = {
