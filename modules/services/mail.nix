@@ -65,8 +65,8 @@ in
         auth-secret   = "%{file:${config.sops.secrets."mailjet-secret-key".path}}%";
       };
       queue.outbound.next-hop = [ "mailjet" ];
+    };
   };
-
   # let stalwart read the ACME-produced cert files
   users.users.stalwart.extraGroups = [ "acme" ];
 
