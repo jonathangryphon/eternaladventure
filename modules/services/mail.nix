@@ -31,11 +31,18 @@ in
     settings = {
       server.hostname = "mail.${domain}";
       directory."internal" = {
-        type = "internal";
-        store = "mail-store";
+        type = "memory";
+        principals = [
+          {
+            class = "individual";
+            name = "example";
+            secret = "%{file:/run/credentials/stalwart.service/mailbox-secret}%";
+            email = [ "example@eternaladventure.xyz" ];
+          }
+        ];
       };
       storage.directory = "internal";
-      
+
       certificate."main" = {
         cert = "%{file:${certDir}/fullchain.pem}%";
         private-key = "%{file:${certDir}/key.pem}%";
@@ -86,30 +93,7 @@ in
   };
   # let stalwart read the ACME-produced cert files
   users.users.stalwart.extraGroups = [ "acme" ];
-
-  # the dynamic layer: domain + mailbox upserts, applied idempotently on every activation
-  environment.etc."stalwart/plan.ndjson".text = lib.concatMapStringsSep "\n" builtins.toJSON [
-    { op = "upsert"; type = "domain"; name = domain; }
-    {
-      op = "upsert"; type = "principal"; name = "example";
-      email = [ "example@${domain}" ];
-      secret = "%{file:/run/credentials/stalwart-apply.service/mailbox-secret}%";
-    }
-  ];
-
-  systemd.services.stalwart-apply = {
-    description = "Apply Stalwart declarative account/domain plan";
-    after = [ "stalwart.service" ];
-    requires = [ "stalwart.service" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      LoadCredential = "mailbox-secret:${config.sops.secrets."example-mailbox-secret".path}";
-      ExecStart = "${pkgs.stalwart}/bin/stalwart-cli --url https://localhost:8095 --credentials admin:%{file:/run/credentials/stalwart.service/admin-secret}% apply /etc/stalwart/plan.ndjson";
-    };
-  };
-
+  
   # mark packets from the stalwart user
   networking.nftables.ruleset = ''
     table inet mangle {
