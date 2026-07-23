@@ -58,8 +58,8 @@ in
 
       # decide, per-recipient, which named route to use
       queue.strategy.route = [
-        { if = "is_local_domain('*', rcpt_domain)"; then = "'local'"; }
-        { else = "'mailjet'"; }
+        { "if" = "is_local_domain('*', rcpt_domain)"; "then" = "'local'"; }
+        { "else" = "'mailjet'"; }
       ];
 
       # local delivery — no extra params, just declares the name the expression above references
