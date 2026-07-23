@@ -21,7 +21,7 @@ in
 
   services.stalwart = {
     enable = true;
-
+    stateVersion = "26.05";
     credentials = {
       mailjet-user = config.sops.secrets."mailjet-api-key".path;
       mailjet-pass = config.sops.secrets."mailjet-secret-key".path;
