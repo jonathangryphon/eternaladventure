@@ -51,7 +51,7 @@
   sops.secrets."grafana-secret-key" = {
     sopsFile = ../secrets/grafana-secret-key.yaml;
     owner = "grafana";
-    group = "grafna";
+    group = "grafana";
   };
   services.grafana = {
     enable = true;
