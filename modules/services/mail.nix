@@ -123,4 +123,10 @@ in
     serviceConfig.Type = "oneshot";
     serviceConfig.RemainAfterExit = true;
   };
+  tracer.stdout = {
+  type = "stdout";
+  level = "debug";
+  ansi = false;
+  enable = true;
+};
 }
