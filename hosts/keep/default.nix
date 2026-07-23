@@ -43,6 +43,21 @@
     ];
   };
 
+  # MAIL SERVER FORWARDING VIA NAT
+  networking.nftables.ruleset = ''
+    table inet nat {
+      chain prerouting {
+        type nat hook prerouting priority -100;
+        tcp dport { 25, 465, 587, 993 } dnat to 10.100.0.2
+      }
+      chain postrouting {
+        type nat hook postrouting priority 100;
+        ip saddr 10.100.0.0/24 masquerade
+      }
+    }
+  '';
+  networking.nat.enable = true; # or boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
   sops.secrets.wg-keep-key = {
     sopsFile = ../../secrets/keep.yaml;
     format = "yaml";
