@@ -35,6 +35,7 @@ in
         ansi = false;
         enable = true;
       };
+      spam-filter.enable = false;
       server.hostname = "mail.${domain}";
       directory."internal" = {
         type = "memory";
