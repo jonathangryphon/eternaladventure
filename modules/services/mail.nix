@@ -36,12 +36,15 @@ in
           {
             class = "individual";
             name = "example";
-            secret = "%{file:/run/credentials/stalwart.service/mailbox-secret}%";
+            secret = "%{file:/run/credentials/stalwart.service/example-mailbox-secret}%";
             email = [ "example@eternaladventure.xyz" ];
           }
         ];
       };
-      storage.directory = "internal";
+      session.rcpt.directory = "internal";
+      session.auth.directory = "internal";
+      session.auth.mechanisms = [ "PLAIN" ];
+      jmap.directory = "internal";
 
       certificate."main" = {
         cert = "%{file:${certDir}/fullchain.pem}%";
@@ -93,7 +96,7 @@ in
   };
   # let stalwart read the ACME-produced cert files
   users.users.stalwart.extraGroups = [ "acme" ];
-  
+
   # mark packets from the stalwart user
   networking.nftables.ruleset = ''
     table inet mangle {
