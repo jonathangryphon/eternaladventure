@@ -52,6 +52,7 @@
   services.grafana = {
     enable = true;
     settings = {
+      security.secret_key = "$__file{/run/secrets/grafana-secret-key}";
       server = {
         http_addr = "127.0.0.1";
         http_port = 3000;
