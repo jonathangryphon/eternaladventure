@@ -9,15 +9,15 @@ in
 {
   # in afabel's host config
   sops.secrets."mailjet-api-key" = {
-    sopsFile = ../secrets/mailjet-smtp.yaml;
+    sopsFile = ../../secrets/mailjet-smtp.yaml;
     owner = "stalwart";
   };
   sops.secrets."mailjet-secret-key" = {
-    sopsFile = ../secrets/mailjet-smtp.yaml;
+    sopsFile = ../../secrets/mailjet-smtp.yaml;
     owner = "stalwart";
   };
-  sops.secrets."admin-secret" = { sopsFile = ../secrets/stalwart.yaml; owner = "stalwart"; };
-  sops.secrets."example-mailbox-secret" = { sopsFile = ../secrets/stalwart.yaml; owner = "stalwart"; };
+  sops.secrets."admin-secret" = { sopsFile = ../../secrets/stalwart.yaml; owner = "stalwart"; };
+  sops.secrets."example-mailbox-secret" = { sopsFile = ../../secrets/stalwart.yaml; owner = "stalwart"; };
 
   services.stalwart = {
     enable = true;
