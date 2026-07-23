@@ -56,16 +56,27 @@ in
       storage.lookup = "mail-store";
       store.mail-store = { type = "rocksdb"; path = "${dataDir}/database"; };
 
-      # outbound: route everything non-local through SES instead of direct MX delivery
-      queue.outbound.relay."mailjet" = {
-        host = "in-v3.mailjet.com";
+      # decide, per-recipient, which named route to use
+      queue.strategy.route = [
+        { if = "is_local_domain('*', rcpt_domain)"; then = "'local'"; }
+        { else = "'mailjet'"; }
+      ];
+
+      # local delivery — no extra params, just declares the name the expression above references
+      queue.route."local" = { type = "local"; };
+
+      # the actual relay route, replacing the old `relay."mailjet"` + `next-hop` pair
+      queue.route."mailjet" = {
+        type = "relay";
+        address = "in-v3.mailjet.com";
         port = 587;
+        protocol = "smtp";
         tls.implicit = false;
-        auth-username = "%{file:${config.sops.secrets."mailjet-api-key".path}}%";
-        auth-secret   = "%{file:${config.sops.secrets."mailjet-secret-key".path}}%";
+        auth = {
+          username = "%{file:/run/credentials/stalwart.service/mailjet-user}%";
+          secret   = "%{file:/run/credentials/stalwart.service/mailjet-pass}%";
+        };
       };
-      queue.outbound.next-hop = [ "mailjet" ];
-    };
   };
   # let stalwart read the ACME-produced cert files
   users.users.stalwart.extraGroups = [ "acme" ];
