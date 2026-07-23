@@ -29,7 +29,7 @@
     # BASE PACKAGES
     environment.systemPackages = with pkgs; [
         # Core CLI
-        vim git wget btop neofetch
+        vim git wget btop fastfetch
 
         # Secrets
         sops age
