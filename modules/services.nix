@@ -7,6 +7,6 @@
         ./services/traefik-dashboard.nix
         ./services/minecraft-server.nix
         ./services/headscale-server.nix 
-        # ./services/mail.nix
+        ./services/mail.nix
     ];
 }
