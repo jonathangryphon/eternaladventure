@@ -30,7 +30,12 @@ in
 
     settings = {
       server.hostname = "mail.${domain}";
-
+      directory."internal" = {
+        type = "internal";
+        store = "mail-store";
+      };
+      storage.directory = "internal";
+      
       certificate."main" = {
         cert = "%{file:${certDir}/fullchain.pem}%";
         private-key = "%{file:${certDir}/key.pem}%";
