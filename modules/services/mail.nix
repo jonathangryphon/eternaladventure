@@ -1,5 +1,5 @@
 # modules/mail.nix
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   domain = "eternaladventure.xyz";
   # reuse the cert Traefik/lego already produces via DNS-01 — no second ACME client needed
