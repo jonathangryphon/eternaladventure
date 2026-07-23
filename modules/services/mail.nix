@@ -100,7 +100,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      LoadCredential = "mailbox-secret:${config.sops.secrets."stalwart-mailbox-secret".path}";
+      LoadCredential = "mailbox-secret:${config.sops.secrets."example-mailbox-secret".path}";
       ExecStart = "${pkgs.stalwart}/bin/stalwart-cli --url https://localhost:8095 --credentials admin:%{file:/run/credentials/stalwart.service/admin-secret}% apply /etc/stalwart/plan.ndjson";
     };
   };
