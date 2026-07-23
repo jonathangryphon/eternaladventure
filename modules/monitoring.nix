@@ -48,7 +48,9 @@
       }
     ];
   };
-
+  sops.secrets."grafana-secret-key" = {
+    sopsFile = ../secrets/grafana-secret-key.yaml;
+  };
   services.grafana = {
     enable = true;
     settings = {
